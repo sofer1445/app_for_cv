@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import {click} from "@testing-library/user-event/dist/click";
+import JobInformation from "./JobInformation";
 
 class Menu extends React.Component {
     state = {
@@ -10,9 +10,10 @@ class Menu extends React.Component {
         theMatchingPercentage: [],
         theMostSuitableJob: [],
         commonKeyWords: [],
-        missingKeyWords: []
-
-    }
+        missingKeyWords: [],
+        showJobInformation: false, // New state variable
+        selectedJobIndex: null, // New state variable
+    };
 
     componentDidMount = async () => {
         const response = await axios.get("http://localhost:8080/api/file");
@@ -25,154 +26,53 @@ class Menu extends React.Component {
             theMatchingPercentage: informationFiles.theMatchingPercentage,
             theMostSuitableJob: informationFiles.theMostSuitableJob,
         });
+    };
 
-
-    }
-
-    buttonViewInformation = (event) => {
-        return (
-            <div>
-                <table className={"table"}>
-                    <tbody>
-                    <tr>
-                        <th> Job</th>
-                        <th> Keywords</th>
-                        <th> Common Keywords</th>
-                        <th> Missing Keywords</th>
-                        <th> Matching Percentage</th>
-                    </tr>
-                    </tbody>
-                    <tbody>
-                    <tr>
-                        <td> {this.state.theMostSuitableJob} </td>
-                        <td> {this.showAllKeyWords(event)} </td>
-                        <td> {this.showCommonKeyWords(event)} </td>
-                        <td> {this.showMissingKeyWords(event)} </td>
-                        <td> {this.state.theMatchingPercentage} </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        );
-
-
-    }
-
-    showAllJobs = () => {
-        return (
-            <div>
-                {this.state.jobDescription.map((job,index) => {
-                    return (
-                        <div>
-                            <li id={"Jobs"}>
-                                {job}
-                            </li>
-                        </div>
-                    );
-                })
-                }
-            </div>
-
-        );
-    }
-
-    showAllKeyWords = (indexJob) => {
-        const keyWords = this.state.jobDetails[indexJob].keywords;
-        return (
-            <div>
-                {keyWords.map((keyWord) => {
-                        return (
-                            <div>
-                                <table className={"keywords"}>
-                                    <tr>
-                                        <td> {keyWord} </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        );
-
-                    }
-                )}
-            </div>
-
-        );
-
-
-    }
-
-    getCommonKeyWords = (event) => {
-        let commonKeyWords = this.state.jobDetails[event].commonKeywords;
-        this.setState({commonKeyWords: commonKeyWords});
-
-    }
-    getMissingKeyWords = (event) => {
-        let missingKeyWords = this.state.jobDetails[event].missingKeywords;
-        this.setState({missingKeyWords: missingKeyWords});
-    }
-
-    showCommonKeyWords = (event) => {
-        this.getCommonKeyWords(event);
-        return (
-            <div>
-                {this.state.commonKeyWords.map((keyWord) => {
-                        return (
-                            <div>
-                                <table className={"keywords"}>
-                                    <tr>
-                                        <td> {keyWord} </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        );
-                    }
-                )}
-            </div>
-        );
-    }
-
-    showMissingKeyWords = (event) => {
-        this.getMissingKeyWords(event);
-        return (
-            <div>
-                {this.state.missingKeyWords.map((keyWord) => {
-                        return (
-                            <div>
-                                <table className={"keywords"}>
-                                    <tr>
-                                        <td> {keyWord} </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        );
-                    }
-                )}
-            </div>
-        );
-    }
+    buttonViewInformation = (indexJob) => {
+        this.setState({
+            showJobInformation: true,
+            selectedJobIndex: indexJob,
+        });
+    };
 
     render() {
+        const { jobDescription, jobDetails, theMatchingPercentage, showJobInformation, selectedJobIndex } = this.state;
+
+        if (showJobInformation) {
+            const job = jobDescription[selectedJobIndex];
+            const listKeyWords = jobDetails[selectedJobIndex].keywords;
+            const listCommonKeywords = jobDetails[selectedJobIndex].commonKeywords;
+            const listMissingKeywords = jobDetails[selectedJobIndex].missingKeywords;
+            const matchingPercentage = theMatchingPercentage[selectedJobIndex];
+
+            return (
+                <div>
+                    <JobInformation
+                        job={job}
+                        listKeyWords={listKeyWords}
+                        listCommonKeywords={listCommonKeywords}
+                        listMissingKeywords={listMissingKeywords}
+                        matchingPercentage={matchingPercentage}
+                    />
+                    <button onClick={() => this.setState({ showJobInformation: false, selectedJobIndex: null })}>
+                        Back
+                    </button>
+                </div>
+            );
+        }
+
         return (
             <div>
+                <h1>List Of Jobs</h1>
                 <div>
-                    <h1>Jobs</h1>
-                    <div>
-                        <div>
-                            {this.state.jobDescription.map((job,index) => {
-                                return (
-                                    <div>
-                                        <li id={"Jobs"}>
-                                            {job}
-                                        </li>
-                                        <div>
-                                            <button onClick={() => this.buttonViewInformation(index)}>View Information</button>
-                                        </div>
-                                    </div>
-                                );
-                            })
-                            }
+                    {jobDescription.map((job, indexJob) => (
+                        <div key={indexJob}>
+                            <p id="Jobs">{job}</p>
+                            <button id="buttonViewInformation" onClick={() => this.buttonViewInformation(indexJob)}>
+                                View Information
+                            </button>
                         </div>
-                    </div>
-
+                    ))}
                 </div>
             </div>
         );
