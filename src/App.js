@@ -1,8 +1,6 @@
 import './App.css';
 import React from "react";
-import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
 import Menu from "./Menu";
-import JobInformation from "./JobInformation";
 
 const navLinkStyle = ({isActive}) => isActive ? {
     color: "white",
