@@ -58,4 +58,39 @@
 .job-table tr:hover {
     background-color: #eaeaea;
 }
+.job-information-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.job-information {
+    flex: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.links-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.links a {
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.links a:hover {
+    color: #ff5722;
+}
 

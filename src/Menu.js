@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import JobInformation from "./JobInformation";
 import TheRightJob from "./TheRightJob";
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
 
 
 class Menu extends React.Component {
@@ -45,73 +45,13 @@ class Menu extends React.Component {
             showBestJob: true,
         });
     }
-
-    // checkTheMostSuitableJob = () => {
-    //     let max = 0;
-    //     let theMostSuitableJob = "";
-    //     const { theMatchingPercentage, jobDescription } = this.state;
-    //     for (let i = 0; i < theMatchingPercentage.length; i++) {
-    //         if (theMatchingPercentage[i] > max) {
-    //             max = theMatchingPercentage[i];
-    //             theMostSuitableJob = jobDescription[i];
-    //         }
-    //     }
-    //     return theMostSuitableJob;
-    //
-    // }
-    // getTheMostSuitableJob = () => {
-    //     debugger;
-    //     const { jobDetails } = this.state;
-    //     let theMostSuitableJob = this.checkTheMostSuitableJob();
-    //     let commonKeyWords = [];
-    //     let missingKeyWords = [];
-    //     for (let i = 0; i < jobDetails.length; i++) {
-    //         if (jobDetails[i].jobName === theMostSuitableJob) {
-    //             commonKeyWords = jobDetails[i].commonKeywords;
-    //             missingKeyWords = jobDetails[i].missingKeywords;
-    //         }
-    //     }
-    //     this.setState({
-    //         theMostSuitableJob: theMostSuitableJob,
-    //         commonKeyWords: commonKeyWords,
-    //         missingKeyWords: missingKeyWords,
-    //         showBestJob: true,
-    //     });
-    //
-    // }
-    //
-    //
-    // renderTheMostSuitableJob = () => {
-    //     const { theMostSuitableJob, commonKeyWords, missingKeyWords } = this.state;
-    //     return (
-    //         <div>
-    //             <h1>The Most Suitable Job</h1>
-    //             <h2>{theMostSuitableJob}</h2>
-    //             <p>
-    //                 <strong>List of Common Keywords:</strong>
-    //             </p>
-    //             <ul>
-    //                 {commonKeyWords.map((keyword, index) => (
-    //                     <li key={index}>{keyword}</li>
-    //                 ))}
-    //             </ul>
-    //             <p>
-    //                 <strong>List of Missing Keywords:</strong>
-    //             </p>
-    //             <ul>
-    //                 {missingKeyWords.map((keyword, index) => (
-    //                     <li key={index}>{keyword}</li>
-    //                 ))}
-    //             </ul>
-    //             <button onClick={() => this.setState({ showBestJob: false })}>
-    //                 Back
-    //             </button>
-    //         </div>
-    //     );
-    //
-    //
-    //
-    // }
+    navLinkStyle = ({isActive}) => isActive ? {
+        color: "white",
+        backgroundColor: "red",
+        margin: 50,
+        align: "center" ,
+        column : "center"
+    } : undefined;
 
 
     render() {
@@ -132,37 +72,74 @@ class Menu extends React.Component {
             const matchingPercentage = theMatchingPercentage[selectedJobIndex];
 
             return (
-                <div>
-                    <JobInformation
-                        job={job}
-                        listKeyWords={listKeyWords}
-                        listCommonKeywords={listCommonKeywords}
-                        listMissingKeywords={listMissingKeywords}
-                        matchingPercentage={matchingPercentage}
-                    />
-                    <button onClick={() => this.setState({
-                        showJobInformation: false,
-                        selectedJobIndex: null,
-                        showBestJob: false
-                    })}>
-                        Back
-                    </button>
-                    {/*// try to call the component TheRightJob*/}
-                    <button onClick={() => this.buttonViewBestJob()}> The Most Suitable Job</button>
-                    {showBestJob ? <TheRightJob theMatchingPercentage={theMatchingPercentage}
-                                                jobDescription={jobDescription}
-                                                jobDetails={jobDetails}
-                                                commonKeyWords={listCommonKeywords}
-                                                missingKeyWords={listMissingKeywords}
-                    /> : null}
-                    {/*<button onClick={() => this.buttonViewBestJob()}> The Most Suitable Job</button>*/}
-                    {/*<button onClick={() => this.getTheMostSuitableJob()}> The Most Suitable Job</button>*/}
-                    {/*{this.state.showBestJob ? this.renderTheMostSuitableJob() : null}*/}
+                <div className="job-information-container">
+                    <div className="job-information">
+                        <JobInformation
+                            job={job}
+                            listKeyWords={listKeyWords}
+                            listCommonKeywords={listCommonKeywords}
+                            listMissingKeywords={listMissingKeywords}
+                            matchingPercentage={matchingPercentage}
+                        />
+                        <button
+                            onClick={() =>
+                                this.setState({
+                                    showJobInformation: false,
+                                    selectedJobIndex: null,
+                                    showBestJob: false
+                                })
+                            }
+                        >
+                            Back
+                        </button>
+                    </div>
+                    <div className="links-container">
+                        <BrowserRouter>
+                            <div className="links">
+                                <NavLink
+                                    style={this.navLinkStyle}
+                                    to={"/TheRightJob"}
+                                    className={"nav"}
+                                >
+                                    TheRightJob
+                                </NavLink>
+                                <NavLink
+                                    style={this.navLinkStyle}
+                                    to={"/"}
+                                    className={"nav"}
+                                >
+                                    Back
+                                </NavLink>
+                            </div>
+                            <Routes>
+                                <Route
+                                    path={"/TheRightJob"}
+                                    element={
+                                        <TheRightJob
+                                            theMatchingPercentage={theMatchingPercentage}
+                                            jobDescription={jobDescription}
+                                            jobDetails={jobDetails}
+                                            commonKeyWords={listCommonKeywords}
+                                            missingKeyWords={listMissingKeywords}
+                                        />
+                                    }
+                                />
+                                <Route
+                                    path={"/"}
+                                    element={() => {
+                                        this.setState({
+                                            showJobInformation: false,
+                                            selectedJobIndex: null,
+                                            showBestJob: false
+                                        });
+                                    }}
+                                />
+                            </Routes>
+                        </BrowserRouter>
+                    </div>
                 </div>
             );
-
         }
-
 
         return (
             <div>
@@ -171,7 +148,10 @@ class Menu extends React.Component {
                     {jobDescription.map((job, indexJob) => (
                         <div key={indexJob}>
                             <p id="Jobs">{job}</p>
-                            <button id="buttonViewInformation" onClick={() => this.buttonViewInformation(indexJob)}>
+                            <button
+                                id="buttonViewInformation"
+                                onClick={() => this.buttonViewInformation(indexJob)}
+                            >
                                 View information
                             </button>
                         </div>
@@ -179,9 +159,8 @@ class Menu extends React.Component {
                 </div>
             </div>
         );
-
-
     }
+
 
 }
 

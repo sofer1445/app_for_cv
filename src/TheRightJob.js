@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 
 class TheRightJob extends React.Component {
     state = {
@@ -83,5 +84,10 @@ class TheRightJob extends React.Component {
 
     }
 }
-
+// ReactDOM.render(
+//     <React.StrictMode>
+//         <TheRightJob />
+//     </React.StrictMode>,
+//     document.getElementById('root')
+// );
 export default TheRightJob;
