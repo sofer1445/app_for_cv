@@ -1,6 +1,7 @@
 import './App.css';
 import React from "react";
 import Menu from "./Menu";
+import picWeb from "./picWebSite.png";
 
 const navLinkStyle = ({isActive}) => isActive ? {
     color: "white",
@@ -12,11 +13,29 @@ const navLinkStyle = ({isActive}) => isActive ? {
 function App() {
     return (
         <div id="App">
-            <Menu/>
+            <div className="backPicWeb">
+                <img
+                    className={"picWebSite"}
+                    src={picWeb}
+                    alt={"picWebSite"}
+                />
+                <div className="display-container">
+                    <Menu />
+                </div>
+            </div>
         </div>
     );
 }
-
+//<div className="background-container">
+//                 <img
+//                     className="background-image"
+//                     src={logo}
+//                     alt="Logo"
+//                 />
+//                 <div className="display-container">
+//                     <Display />
+//                 </div>
+//             </div>
 export default App;
 
 

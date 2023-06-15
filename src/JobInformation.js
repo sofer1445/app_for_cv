@@ -31,7 +31,7 @@ function JobInformation({ job, listKeyWords, listCommonKeywords, listMissingKeyw
                     ))}
                 </ul>
                 <p>
-                    <strong>Matching Percentage:</strong> {matchingPercentage}
+                    <strong>Matching Percentage:</strong> {matchingPercentage} % matching
                 </p>
             </div>
         </div>

@@ -51,21 +51,21 @@ class TheRightJob extends React.Component {
     renderTheMostSuitableJob = () => {
         console.log("renderTheMostSuitableJob");
         return (
-            <div>
+            <div className={"the-right-job"}>
                 <h1>The Most Suitable Job</h1>
                 <h2>{this.state.theMostSuitableJob}</h2>
-                <p>
+                <p className={"name-right-job"}>
                     <strong>List of Common Keywords:</strong>
                 </p>
-                <ul>
+                <ul className={"name-right-job"}>
                     {this.commonKeyWords.map((keyword, index) => (
                         <li key={index}>{keyword}</li>
                     ))}
                 </ul>
-                <p>
+                <p className={"name-right-job"}>
                     <strong>List of Missing Keywords:</strong>
                 </p>
-                <ul>
+                <ul className={"name-right-job"}>
                     {this.missingKeyWords.map((keyword, index) => (
                         <li key={index}>{keyword}</li>
                     ))}
