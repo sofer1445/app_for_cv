@@ -7,6 +7,9 @@ function JobInformation({ job, listKeyWords, listCommonKeywords, listMissingKeyw
             <div className="job-details">
                 <h2>Job: {job}</h2>
                 <p>
+                    <strong>Matching Percentage:</strong> {matchingPercentage} % matching
+                </p>
+                <p>
                     <strong>List of Common Keywords:</strong>
                 </p>
                 <ul>
@@ -30,9 +33,7 @@ function JobInformation({ job, listKeyWords, listCommonKeywords, listMissingKeyw
                         <li key={index}>{keyword}</li>
                     ))}
                 </ul>
-                <p>
-                    <strong>Matching Percentage:</strong> {matchingPercentage} % matching
-                </p>
+
             </div>
         </div>
     );

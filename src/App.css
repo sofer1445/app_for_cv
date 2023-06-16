@@ -1,6 +1,4 @@
 
-
-
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -28,6 +26,7 @@
     border-radius: 4px;
     resize: vertical;
 }
+
 .job-table {
     width: 100%;
     border-collapse: collapse;
@@ -51,6 +50,7 @@
 .job-table tr:hover {
     background-color: #eaeaea;
 }
+
 .job-information-container {
     display: flex;
     flex-direction: row;
@@ -86,6 +86,7 @@
 .links a:hover {
     color: #ff5722;
 }
+
 .backPicWeb {
     position: relative;
 }
@@ -107,7 +108,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;}
+    height: 100%;
+}
 
 #Jobs {
     display: flex;
@@ -118,6 +120,7 @@
 
 
 }
+
 .name-right-job {
     display: flex;
     flex-direction: column;
@@ -130,6 +133,40 @@
     color: white;
     transition: background-color 0.3s ease-in-out;
 }
+
+.popWord {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.TitleMostJob {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(90, 90, 90);
+    transition: background-color 0.3s ease-in-out;
+
+}
+#TitlePop {
+
+
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
 
 
 

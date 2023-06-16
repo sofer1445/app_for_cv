@@ -52,8 +52,8 @@ class TheRightJob extends React.Component {
         console.log("renderTheMostSuitableJob");
         return (
             <div className={"the-right-job"}>
-                <h1>The Most Suitable Job</h1>
-                <h2>{this.state.theMostSuitableJob}</h2>
+                <h1 className={"TitleMostJob"}>The Most Suitable Job:</h1>
+                <h2 className={"TitleMostJob"}>{this.state.theMostSuitableJob}</h2>
                 <p className={"name-right-job"}>
                     <strong>List of Common Keywords:</strong>
                 </p>

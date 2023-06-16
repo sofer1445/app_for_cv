@@ -3,6 +3,7 @@ import axios from "axios";
 import JobInformation from "./JobInformation";
 import TheRightJob from "./TheRightJob";
 import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
+import PopularWords from "./PopularWords";
 
 
 class Menu extends React.Component {
@@ -16,7 +17,8 @@ class Menu extends React.Component {
         missingKeyWords: [],
         showJobInformation: false,
         selectedJobIndex: null,
-        showBestJob: false,
+        // showBestJob: false,
+        // showPopularWords: false,
     };
 
     componentDidMount = async () => {
@@ -61,7 +63,6 @@ class Menu extends React.Component {
             theMatchingPercentage,
             showJobInformation,
             selectedJobIndex,
-            showBestJob
         } = this.state;
 
         if (showJobInformation) {
@@ -74,13 +75,6 @@ class Menu extends React.Component {
             return (
                 <div className="job-information-container">
                     <div className="job-information">
-                        <JobInformation
-                            job={job}
-                            listKeyWords={listKeyWords}
-                            listCommonKeywords={listCommonKeywords}
-                            listMissingKeywords={listMissingKeywords}
-                            matchingPercentage={matchingPercentage}
-                        />
                         <button
                             onClick={() =>
                                 this.setState({
@@ -92,6 +86,13 @@ class Menu extends React.Component {
                         >
                             Back
                         </button>
+                        <JobInformation
+                            job={job}
+                            listKeyWords={listKeyWords}
+                            listCommonKeywords={listCommonKeywords}
+                            listMissingKeywords={listMissingKeywords}
+                            matchingPercentage={matchingPercentage}
+                        />
                     </div>
                     <div className="links-container">
                         <BrowserRouter>
@@ -102,6 +103,13 @@ class Menu extends React.Component {
                                     className={"nav"}
                                 >
                                     TheRightJob
+                                </NavLink>
+                                <NavLink
+                                    style={this.navLinkStyle}
+                                    to={"/PopularWords"}
+                                    className={"nav"}
+                                >
+                                    PopularWords
                                 </NavLink>
                                 <NavLink
                                     style={this.navLinkStyle}
@@ -125,12 +133,22 @@ class Menu extends React.Component {
                                     }
                                 />
                                 <Route
+                                    path={"/PopularWords"}
+                                    element={
+                                        <PopularWords
+                                            jobDetails={jobDetails}
+                                            />
+                                    }
+                                />
+                                <Route
                                     path={"/"}
                                     element={() => {
                                         this.setState({
                                             showJobInformation: false,
                                             selectedJobIndex: null,
-                                            showBestJob: false
+                                            showBestJob: false,
+                                            showPopularWords: false
+
                                         });
                                     }}
                                 />
