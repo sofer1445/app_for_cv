@@ -24,21 +24,21 @@ class PopularWords extends React.Component {
         debugger;
         console.log("checkPopularWords");
 
-            let unpopularWords = this.props.jobDetails[0].keywords;
-            let popularWords = [];
-            let keyWords = [];
-            for (let i = 1; i < this.props.jobDetails.length; i++) {
-                keyWords = this.props.jobDetails[i].keywords;
-                console.log("jobName: " + this.props.jobDetails[i].jobName);
-                for (let j = 0; j < keyWords.length; j++) {
-                    if (unpopularWords.includes(keyWords[j])) {
-                        unpopularWords = unpopularWords.filter((word) => word !== keyWords[j]);
-                        popularWords.push(keyWords[j]);
-                    }
+        let unpopularWords = this.props.jobDetails[0].keywords;
+        let popularWords = [];
+        let keyWords = [];
+        for (let i = 1; i < this.props.jobDetails.length; i++) {
+            keyWords = this.props.jobDetails[i].keywords;
+            console.log("jobName: " + this.props.jobDetails[i].jobName);
+            for (let j = 0; j < keyWords.length; j++) {
+                if (unpopularWords.includes(keyWords[j])) {
+                    unpopularWords = unpopularWords.filter((word) => word !== keyWords[j]);
+                    popularWords.push(keyWords[j]);
                 }
-
             }
-            return popularWords;
+
+        }
+        return popularWords;
 
 
     };

@@ -4,6 +4,8 @@ import JobInformation from "./JobInformation";
 import TheRightJob from "./TheRightJob";
 import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
 import PopularWords from "./PopularWords";
+import NavLinkStyle from "./NavLinkStyle";
+import FileUpload from "./FileUpload";
 
 
 class Menu extends React.Component {
@@ -12,18 +14,13 @@ class Menu extends React.Component {
         files: [],
         jobDetails: [],
         theMatchingPercentage: [],
-        theMostSuitableJob: [], // מערך של כל המשרות בצורה של שם וכמות מילים משותפות (מפה)
-        commonKeyWords: [],
-        missingKeyWords: [],
+        theMostSuitableJob: [],
         showJobInformation: false,
         selectedJobIndex: null,
-        // showBestJob: false,
-        // showPopularWords: false,
     };
 
-    componentDidMount = async () => {
+    fetchData = async () => {
         const response = await axios.get("http://localhost:8080/api/file");
-        console.log(response.data);
         const informationFiles = response.data;
         this.setState({
             jobDescription: informationFiles.jobDescription,
@@ -33,6 +30,16 @@ class Menu extends React.Component {
             theMostSuitableJob: informationFiles.theMostSuitableJob,
         });
     };
+
+    componentDidMount = async () => {
+        await this.fetchData();
+    };
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.selectedJobIndex !== this.state.selectedJobIndex) {
+            this.fetchData();
+        }
+    }
 
     buttonViewInformation = (indexJob) => {
         this.setState({
@@ -47,13 +54,9 @@ class Menu extends React.Component {
             showBestJob: true,
         });
     }
-    navLinkStyle = ({isActive}) => isActive ? {
-        color: "white",
-        backgroundColor: "red",
-        margin: 50,
-        align: "center" ,
-        column : "center"
-    } : undefined;
+
+
+
 
 
     render() {
@@ -98,21 +101,21 @@ class Menu extends React.Component {
                         <BrowserRouter>
                             <div className="links">
                                 <NavLink
-                                    style={this.navLinkStyle}
+                                    style={NavLinkStyle}
                                     to={"/TheRightJob"}
                                     className={"nav"}
                                 >
                                     TheRightJob
                                 </NavLink>
                                 <NavLink
-                                    style={this.navLinkStyle}
+                                    style={NavLinkStyle}
                                     to={"/PopularWords"}
                                     className={"nav"}
                                 >
                                     PopularWords
                                 </NavLink>
                                 <NavLink
-                                    style={this.navLinkStyle}
+                                    style={NavLinkStyle}
                                     to={"/"}
                                     className={"nav"}
                                 >
@@ -137,7 +140,7 @@ class Menu extends React.Component {
                                     element={
                                         <PopularWords
                                             jobDetails={jobDetails}
-                                            />
+                                        />
                                     }
                                 />
                                 <Route
@@ -163,6 +166,9 @@ class Menu extends React.Component {
             <div>
                 <h1>List Of Jobs</h1>
                 <div>
+                    <div>
+                        <FileUpload />
+                    </div>
                     {jobDescription.map((job, indexJob) => (
                         <div key={indexJob}>
                             <p id="Jobs">{job}</p>

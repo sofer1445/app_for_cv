@@ -2,92 +2,43 @@ import './App.css';
 import React from "react";
 import Menu from "./Menu";
 import picWeb from "./picWebSite.png";
+import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
+import FileUpload from "./FileUpload";
 
 const navLinkStyle = ({isActive}) => isActive ? {
     color: "white",
     backgroundColor: "red",
     margin: 50,
-    align: "center" ,
-    column : "center"
+    align: "center",
+    column: "center"
 } : undefined;
+
 function App() {
     return (
         <div id="App">
             <div className="backPicWeb">
-                <img
-                    className={"picWebSite"}
-                    src={picWeb}
-                    alt={"picWebSite"}
-                />
-                <div className="display-container">
-                    <Menu />
-                </div>
-            </div>
+                             <img
+                                className={"picWebSite"}
+                                src={picWeb}
+                                alt={"picWebSite"}
+                            />
+                            <div className="display-container">
+                                <Menu />
+                            </div>
+                        </div>
+
         </div>
     );
 }
-//<div className="background-container">
+
+export default App;
+//<div className="backPicWeb">
 //                 <img
-//                     className="background-image"
-//                     src={logo}
-//                     alt="Logo"
+//                     className={"picWebSite"}
+//                     src={picWeb}
+//                     alt={"picWebSite"}
 //                 />
 //                 <div className="display-container">
-//                     <Display />
+//                     <Menu />
 //                 </div>
 //             </div>
-export default App;
-
-
-
-
-//import './App.css';
-// import React from "react";
-// import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
-// import HomePage from "./HomePage";
-// import TheLeadingScorers from "./TheLeadingScorers";
-// import TablesPage from "./TablesPage";
-// import HistoryPage from "./HistoryPage";
-// import StatisticsPage from "./StatisticsPage";
-//
-//
-// const navLinkStyle = ({isActive}) => isActive ? {
-//     color: "white",
-//     backgroundColor: "red",
-//     margin: 50,
-//     align: "center" ,
-//     column : "center"
-// } : undefined;
-//
-//
-// class App extends React.Component {
-//
-//
-//     state = {}
-//
-//     render() {
-//         return (
-//             <div id="App">
-//                 <h1>Football App</h1>
-//                 <BrowserRouter>
-//                     <NavLink  style={navLinkStyle} to={"/homepage"} className={"nav"}>HomePage</NavLink>
-//                     <NavLink style={navLinkStyle} to={"/tables"} className={"nav"}>TablesPage</NavLink>
-//                     <NavLink style={navLinkStyle} to={"/TheLeadingScorers"} className={"nav"}>TheLeadingScorers</NavLink>
-//                     <NavLink style={navLinkStyle} to={"/history"} className={"nav"}>HistoryPage</NavLink>
-//                     <NavLink style={navLinkStyle} to={"/statistics"} className={"nav"}>StatisticsPage</NavLink>
-//
-//                     <Routes>
-//                         <Route path={"/homepage"} element={<HomePage/>}/>
-//                         <Route path={"/tables"} element={<TablesPage/>}/>
-//                         <Route path={"/TheLeadingScorers"} element={<TheLeadingScorers/>}/>
-//                         <Route path={"/history"} element={<HistoryPage/>}/>
-//                         <Route path={"/statistics"} element={<StatisticsPage/>}/>
-//                     </Routes>
-//                 </BrowserRouter>
-//             </div>
-//         );
-//     }
-//
-// }
-//
-// export default App;
