@@ -42,12 +42,14 @@ class FileUpload extends React.Component {
     }
 
 
+
     render() {
         return (
             <div className="container">
                 {this.state.loaded === 2 ?
                     <div>
-                        {this.state.nameFile}
+                        <p>File uploaded successfully</p>
+                        {this.props.fileName(this.state.nameFile)}
                     </div>
                     :
                     <div className="row">

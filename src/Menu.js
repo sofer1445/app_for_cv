@@ -17,6 +17,8 @@ class Menu extends React.Component {
         theMostSuitableJob: [],
         showJobInformation: false,
         selectedJobIndex: null,
+        nameOfTheFile: null,
+        showNameFile: false,
     };
 
     fetchData = async () => {
@@ -28,6 +30,7 @@ class Menu extends React.Component {
             jobDetails: informationFiles.jobDetailsArray,
             theMatchingPercentage: informationFiles.theMatchingPercentage,
             theMostSuitableJob: informationFiles.theMostSuitableJob,
+            nameOfTheFile: informationFiles.cvFile,
         });
     };
 
@@ -39,6 +42,7 @@ class Menu extends React.Component {
         if (prevState.selectedJobIndex !== this.state.selectedJobIndex) {
             this.fetchData();
         }
+
     }
 
     buttonViewInformation = (indexJob) => {
@@ -53,6 +57,23 @@ class Menu extends React.Component {
         this.setState({
             showBestJob: true,
         });
+    }
+    fileName = (string) => {
+        this.setState({
+            nameOfTheFile: string,
+            // showNameFile: true,
+        })
+       return (
+           <div>
+               <h5 id={"nameOfFile"}>The file is: {this.state.nameOfTheFile}</h5>
+           </div>
+       )
+
+
+    }
+    extractTheNameFromTheString = (string) => {
+        let name = string.split("\\");
+        return name[name.length - 1];
     }
 
 
@@ -83,7 +104,8 @@ class Menu extends React.Component {
                                 this.setState({
                                     showJobInformation: false,
                                     selectedJobIndex: null,
-                                    showBestJob: false
+                                    showBestJob: false,
+                                    showNameFile: true,
                                 })
                             }
                         >
@@ -167,8 +189,16 @@ class Menu extends React.Component {
                 <h1>List Of Jobs</h1>
                 <div>
                     <div>
-                        <FileUpload />
+                        <FileUpload
+                            fileName={this.fileName}
+                        />
+                        {this.state.showNameFile ? (
+                            <div>
+                                <h5 id={"nameOfFile"}>Presents data according to the following CV: {this.extractTheNameFromTheString(this.state.nameOfTheFile)}</h5>
+                            </div>
+                        ) : null }
                     </div>
+
                     {jobDescription.map((job, indexJob) => (
                         <div key={indexJob}>
                             <p id="Jobs">{job}</p>

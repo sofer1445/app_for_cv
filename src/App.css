@@ -166,6 +166,18 @@
     color: white;
     transition: background-color 0.3s ease-in-out;
 }
+#nameOfFile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2px;
+    width: 20%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(20, 20, 39);
+    transition: background-color 0.3s ease-in-out;
+}
 
 
 
