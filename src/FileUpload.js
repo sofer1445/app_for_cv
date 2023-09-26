@@ -4,7 +4,7 @@ import Menu from "./Menu";
 import NavLinkStyle from "./NavLinkStyle";
 import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
 
-// לנסות לשנות את התפריט כך שיקבל מידע מהשרת על פי הקובץ שעלה
+
 class FileUpload extends React.Component {
     state = {
         selectedFile: null,

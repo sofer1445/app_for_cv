@@ -76,10 +76,6 @@ class Menu extends React.Component {
         return name[name.length - 1];
     }
 
-
-
-
-
     render() {
         const {
             jobDescription,
