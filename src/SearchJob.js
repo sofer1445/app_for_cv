@@ -34,29 +34,41 @@ class SearchJob extends React.Component {
         this.forceUpdate();
     };
 
-    formatJobDetails = (jobDetails) => {
-        console.log("start format: " + jobDetails);
+    formatJobDetails = (internetJobs) => {
         return(
-            jobDetails.map((jobDetail, index) => (
-                <div key={index}>
-                    <h1>{jobDetail.jobName}</h1>
-                    <h2>Company Name:</h2>
-                    <p>{jobDetail.companyName}</p>
-                    <h2>Website:</h2>
-                    <p>{jobDetail.webSite}</p>
-                    <h2>Location:</h2>
-                    <p>{jobDetail.location}</p>
-                    <h2>Date:</h2>
-                    <p>{jobDetail.date}</p>
-                    <h2>Job Link:</h2>
-                    <p>{"https://www.drushim.co.il/" + jobDetail.jobLink}</p>
-                    <h2>Job Detail Text:</h2>
-                    <ul>
-                        {jobDetail.jobDetailText.map((text, index) => (
-                            <li key={index}>{text}</li>
-                        ))}
-                    </ul>
-                </div>
+            internetJobs.map((jobDetail, index) => (
+                jobDetail !== null && (
+                    <table key={index} className="job-table">
+                        <thead>
+                        <tr>
+                            <th>Job Name</th>
+                            <th>Company Name</th>
+                            <th>Website</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Job Link</th>
+                            <th>Job Detail Text</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{jobDetail.jobName}</td>
+                            <td>{jobDetail.companyName}</td>
+                            <td><a href={jobDetail.webSite} target="_blank" rel="noopener noreferrer">{jobDetail.webSite}</a></td>
+                            <td>{jobDetail.location}</td>
+                            <td>{jobDetail.date}</td>
+                            <td><a href={"https://www.drushim.co.il/" + jobDetail.jobLink} target="_blank" rel="noopener noreferrer">Job Link</a></td>
+                            <td>
+                                <ul>
+                                    {jobDetail.jobDetailText.map((text, index) => (
+                                        <li key={index}>{text}</li>
+                                    ))}
+                                </ul>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                )
             ))
         )
     }
@@ -72,8 +84,8 @@ class SearchJob extends React.Component {
                     ))}
                 </select>
                 <button onClick={this.searchJob}>Search</button>
-                {this.state.isLoading ? <img className="spinner" src={spinner} alt="Loading..." /> : null}
-                {this.state.jobDetails.length > 0 ? this.formatJobDetails(this.state.jobDetails) : null} // not working
+                {this.state.isLoading ? <img className="spinner" src={spinner} alt="Loading..."/> : null}
+                {this.state.jobDetails.internetJobs ? this.formatJobDetails(this.state.jobDetails.internetJobs) : null}
 
             </div>
         );

@@ -4,6 +4,7 @@ import Menu from "./Menu";
 import picWeb from "./picWebSite.png";
 import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
 import FileUpload from "./FileUpload";
+import SearchJob from './SearchJob';
 
 const navLinkStyle = ({isActive}) => isActive ? {
     color: "white",
@@ -17,16 +18,16 @@ function App() {
     return (
         <div id="App">
             <div className="backPicWeb">
-                             <img
-                                className={"picWebSite"}
-                                src={picWeb}
-                                alt={"picWebSite"}
-                            />
-                            <div className="display-container">
-                                <Menu />
-                            </div>
-                        </div>
-
+                <img
+                    className={"picWebSite"}
+                    src={picWeb}
+                    alt={"picWebSite"}
+                />
+                <div className="display-container">
+                    <Menu />
+                </div>
+            </div>
+            <SearchJob />
         </div>
     );
 }
