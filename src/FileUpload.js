@@ -61,7 +61,7 @@ class FileUpload extends React.Component {
                                            onChange={this.onChangeHandler}/>
                                 </div>
                                 <div className="form-group">
-                                    <button type="button" className="btn btn-success btn-block"
+                                    <button type="button" className="btn btn-success btn-block" disabled={!this.state.loaded}
                                             onClick={this.onClickHandler}>Upload
                                     </button>
                                 </div>

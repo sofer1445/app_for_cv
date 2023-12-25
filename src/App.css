@@ -160,12 +160,14 @@
     transition: background-color 0.3s ease-in-out;
 
 }
+
 #TitlePop {
 
 
     color: white;
     transition: background-color 0.3s ease-in-out;
 }
+
 #nameOfFile {
     display: flex;
     flex-direction: column;
@@ -179,13 +181,11 @@
     transition: background-color 0.3s ease-in-out;
 }
 
+.spinner {
+    width: 50px;
+    height: 50px;
+}
 
-
-
-
-/*#inputNewFile {*/
-/*    display: none;*/
-/*}*/
 
 
 

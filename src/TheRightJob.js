@@ -1,8 +1,11 @@
 import React from "react";
-import ReactDOM from 'react-dom';
+import axios from "axios";
+import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
+import SearchJob from "./SearchJob";
 
 class TheRightJob extends React.Component {
     state = {
+        showSearchJob: false,
         showBestJob: false,
         commonKeyWords: [],
         missingKeyWords: [],
@@ -34,7 +37,6 @@ class TheRightJob extends React.Component {
     getTheMostSuitableJob = () => {
         console.log("getTheMostSuitableJob");
         const theMostSuitableJob = this.checkSuitableJob();
-        debugger;
         for (let i = 0; i < this.props.jobDetails.length; i++) {
             if (this.props.jobDetails[i].jobName === theMostSuitableJob) {
                 this.commonKeyWords = this.props.jobDetails[i].commonKeywords;
@@ -74,16 +76,35 @@ class TheRightJob extends React.Component {
         );
     };
 
+    // renderSearchJob = () => {
+    //     console.log("renderSearchJob");
+    //     return <SearchJob />;
+    // }
+    toggleSearchJob = () => {
+        this.setState(prevState => ({
+            showSearchJob: !prevState.showSearchJob
+        }));
+    }
+
+
     render() {
         return (
             <div>
-                <button onClick={this.getTheMostSuitableJob}>View The Most Suitable Job</button>
-                {this.state.showBestJob ? this.renderTheMostSuitableJob() : null}
+                <div>
+                    <button onClick={this.getTheMostSuitableJob}>View The Most Suitable Job</button>
+                    {this.state.showBestJob ? this.renderTheMostSuitableJob() : null}
+                </div>
+                {/*A button that links to a page that displays the job search*/}
+                <div className={"viewVacancies"}>
+                    <button onClick={this.toggleSearchJob} disabled={!this.state.showBestJob}>View Vacancies
+                    </button>
+                </div>
+                {this.state.showSearchJob ? <SearchJob /> : null}
             </div>
         );
-
     }
 }
+
 // ReactDOM.render(
 //     <React.StrictMode>
 //         <TheRightJob />

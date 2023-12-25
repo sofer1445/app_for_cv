@@ -21,6 +21,7 @@ class Menu extends React.Component {
         showNameFile: false,
     };
 
+
     fetchData = async () => {
         const response = await axios.get("http://localhost:8080/api/file");
         const informationFiles = response.data;
@@ -63,11 +64,11 @@ class Menu extends React.Component {
             nameOfTheFile: string,
             // showNameFile: true,
         })
-       return (
-           <div>
-               <h5 id={"nameOfFile"}>The file is: {this.state.nameOfTheFile}</h5>
-           </div>
-       )
+        return (
+            <div>
+                <h5 id={"nameOfFile"}>The file is: {this.state.nameOfTheFile}</h5>
+            </div>
+        )
 
 
     }
@@ -75,6 +76,8 @@ class Menu extends React.Component {
         let name = string.split("\\");
         return name[name.length - 1];
     }
+
+
 
     render() {
         const {
@@ -190,9 +193,10 @@ class Menu extends React.Component {
                         />
                         {this.state.showNameFile ? (
                             <div>
-                                <h5 id={"nameOfFile"}>Presents data according to the following CV: {this.extractTheNameFromTheString(this.state.nameOfTheFile)}</h5>
+                                <h5 id={"nameOfFile"}>Presents data according to the following
+                                    CV: {this.extractTheNameFromTheString(this.state.nameOfTheFile)}</h5>
                             </div>
-                        ) : null }
+                        ) : null}
                     </div>
 
                     {jobDescription.map((job, indexJob) => (
@@ -206,6 +210,10 @@ class Menu extends React.Component {
                             </button>
                         </div>
                     ))}
+                    <div>
+
+
+                    </div>
                 </div>
             </div>
         );
