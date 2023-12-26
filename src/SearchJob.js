@@ -6,12 +6,17 @@ class SearchJob extends React.Component {
     state = {
         loaded: 0,
         data: [],
-        selectedJob: 'Software Engineer',
+        selectedJob: '',
         jobDetails: [],
         isLoading: false,
     };
 
     handleJobChange = event => {
+        this.setState({
+            selectedJob: event.target.value,
+        });
+    }
+    handleFreeSearchChange = event => {
         this.setState({
             selectedJob: event.target.value,
         });
@@ -74,19 +79,20 @@ class SearchJob extends React.Component {
     }
 
     render() {
-        const jobs = ['Software Engineer', 'Data Scientist', 'Product Manager'];
-
+        const jobs = ['Software Engineer', 'Automation Engineer', 'DevOps Engineer', 'Frontend Developer', 'Backend Developer', 'Fullstack',
+            'Software Tester', 'Web Developer', 'QA Automation', ];
         return (
             <div>
-                <select value={this.state.selectedJob} onChange={this.handleJobChange}>
+                <h2 className={"TitleSearch"}>Search Job</h2>
+                <select className="select-input" value={this.state.selectedJob} onChange={this.handleJobChange}>
                     {jobs.map((job, index) => (
                         <option key={index} value={job}>{job}</option>
                     ))}
                 </select>
-                <button onClick={this.searchJob}>Search</button>
+                <input className="input-text" type="text" placeholder={"free search"} value={this.state.selectedJob} onChange={this.handleFreeSearchChange} />
+                <button onClick={this.searchJob} disabled={this.state.selectedJob === ''}>Search</button>
                 {this.state.isLoading ? <img className="spinner" src={spinner} alt="Loading..."/> : null}
                 {this.state.jobDetails.internetJobs ? this.formatJobDetails(this.state.jobDetails.internetJobs) : null}
-
             </div>
         );
     }

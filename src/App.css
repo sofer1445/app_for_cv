@@ -88,7 +88,15 @@
 }
 
 .backPicWeb {
-    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+
 }
 
 .picWeb {
@@ -192,8 +200,54 @@
     padding: 10px;
     border: 1px solid #ddd;
 }
+.select-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.input-text {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.TitleSearch {
+    font-size: 2em;
+    color: #4CAF50;
+    text-align: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+    margin-bottom: 20px;
+}
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
 
 
+.App-menu a {
+    margin-right: 20px;
+}
+
+.App-menu a.active {
+    color: blue;
+    font-weight: bold;
+}
+.App {
+    background-image: url('./picWebSite.png');
+    background-size: cover;
+    background-position: center;
+}
 
 
 

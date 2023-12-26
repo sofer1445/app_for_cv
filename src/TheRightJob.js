@@ -1,6 +1,4 @@
 import React from "react";
-import axios from "axios";
-import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
 import SearchJob from "./SearchJob";
 
 class TheRightJob extends React.Component {
@@ -76,10 +74,7 @@ class TheRightJob extends React.Component {
         );
     };
 
-    // renderSearchJob = () => {
-    //     console.log("renderSearchJob");
-    //     return <SearchJob />;
-    // }
+
     toggleSearchJob = () => {
         this.setState(prevState => ({
             showSearchJob: !prevState.showSearchJob

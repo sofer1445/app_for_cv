@@ -1,20 +1,12 @@
 import './App.css';
-import React from "react";
+import React, { useState } from "react";
 import Menu from "./Menu";
 import picWeb from "./picWebSite.png";
-import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
-import FileUpload from "./FileUpload";
 import SearchJob from './SearchJob';
 
-const navLinkStyle = ({isActive}) => isActive ? {
-    color: "white",
-    backgroundColor: "red",
-    margin: 50,
-    align: "center",
-    column: "center"
-} : undefined;
-
 function App() {
+    const [page, setPage] = useState("menu");
+
     return (
         <div id="App">
             <div className="backPicWeb">
@@ -24,22 +16,17 @@ function App() {
                     alt={"picWebSite"}
                 />
                 <div className="display-container">
-                    <Menu />
+                    <button onClick={() => setPage("menu")} disabled={page === "menu"}>
+                        Menu
+                    </button>
+                    <button onClick={() => setPage("searchJob")} disabled={page === "searchJob"}>
+                        Search Job
+                    </button>
+                    {page === "menu" ? <Menu/> : <SearchJob/>}
                 </div>
             </div>
-            <SearchJob />
         </div>
     );
 }
 
 export default App;
-//<div className="backPicWeb">
-//                 <img
-//                     className={"picWebSite"}
-//                     src={picWeb}
-//                     alt={"picWebSite"}
-//                 />
-//                 <div className="display-container">
-//                     <Menu />
-//                 </div>
-//             </div>
