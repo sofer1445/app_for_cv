@@ -8,6 +8,7 @@ class TheRightJob extends React.Component {
         commonKeyWords: [],
         missingKeyWords: [],
         theMostSuitableJob: "",
+        onlineJobDetails: [],
 
     }
 
@@ -82,6 +83,7 @@ class TheRightJob extends React.Component {
     }
 
 
+
     render() {
         return (
             <div>
@@ -94,16 +96,13 @@ class TheRightJob extends React.Component {
                     <button onClick={this.toggleSearchJob} disabled={!this.state.showBestJob}>View Vacancies
                     </button>
                 </div>
-                {this.state.showSearchJob ? <SearchJob /> : null}
+                {this.state.showSearchJob ? <SearchJob
+                    // onlineJobDetails={this.props.jobDetails}
+                    // send the this.state.showBestJob to SearchJob.selectedJob
+                    selectedJob={this.state.theMostSuitableJob} //להתחיל מפה לא עובד
+                /> : null}
             </div>
         );
     }
 }
-
-// ReactDOM.render(
-//     <React.StrictMode>
-//         <TheRightJob />
-//     </React.StrictMode>,
-//     document.getElementById('root')
-// );
 export default TheRightJob;

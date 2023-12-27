@@ -1,3 +1,76 @@
+#App {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('./picForCvProj.jpeg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh; /* Ensure the container takes up at least the full height of the viewport */
+    padding: 1em; /* Add some padding around the content */
+    box-sizing: border-box; /* Ensure padding is included in the height calculation */
+}
+.logo {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 480px; /* Adjust this value to fit your needs */
+    height: 360px; /* Adjust this value to fit your needs */
+    transform: translateY(-50%); /* Centers the logo vertically */
+}
+
+.display-container {
+    position: relative;
+    width: 100%;
+    color: #141427;
+    text-shadow: 2px 2px 4px rgba(90, 90, 90, 0.47);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.flex-display {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-start {
+    align-items: flex-start;
+}
+
+.bg-semi-transparent {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.transition-bg {
+    transition: background-color 0.3s ease-in-out;
+}
+
+.bg-cover {
+    background-size: cover;
+}
+
+.bg-center {
+    background-position: center;
+}
 
 .table {
     width: 100%;
@@ -12,7 +85,6 @@
 
 .table th {
     background-color: #f2f2f2;
-    font-weight: bold;
 }
 
 .table tr:hover {
@@ -61,22 +133,6 @@
     transition: opacity 0.3s ease-in-out;
 }
 
-.links-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.links {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
 .links a {
     display: block;
     margin-bottom: 10px;
@@ -87,105 +143,21 @@
     color: #ff5722;
 }
 
-.backPicWeb {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
-
-}
-
-.picWeb {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
-
-}
-
-.display-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 #Jobs {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-
-
-}
-
-.name-right-job {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 10px;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.popWord {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 10px;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.TitleMostJob {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 10px;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: rgb(90, 90, 90);
-    transition: background-color 0.3s ease-in-out;
-
+    gap: 20px; /* Adds space between the items */
+    padding: 20px; /* Adds space around the items */
+    background-color: #f5f5f5; /* Changes the background color */
+    border-radius: 10px; /* Rounds the corners */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Adds a shadow */
 }
 
 #TitlePop {
-
-
     color: white;
-    transition: background-color 0.3s ease-in-out;
-}
-
-#nameOfFile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 2px;
-    width: 20%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: rgb(20, 20, 39);
     transition: background-color 0.3s ease-in-out;
 }
 
@@ -200,6 +172,7 @@
     padding: 10px;
     border: 1px solid #ddd;
 }
+
 .select-input {
     width: 100%;
     padding: 10px;
@@ -217,6 +190,7 @@
     border: 1px solid #ddd;
     border-radius: 4px;
 }
+
 .TitleSearch {
     font-size: 2em;
     color: #4CAF50;
@@ -225,15 +199,6 @@
     background-color: #f2f2f2;
     margin-bottom: 20px;
 }
-.background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
 
 .App-menu a {
     margin-right: 20px;
@@ -243,11 +208,93 @@
     color: blue;
     font-weight: bold;
 }
-.App {
-    background-image: url('./picWebSite.png');
-    background-size: cover;
-    background-position: center;
+.buttonApp {
+    background-color: #4c68af;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0 9px #999;
 }
 
+.buttonApp:hover {
+    background-color: #3e8e41;
+    color: white;
+}
 
+.buttonApp:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+.scroll-downs {
+    position: absolute;
+    bottom: 50%;
+    left: 10px; /* Move the arrows to the left side of the screen */
+    width: 48px; /* Adjust this value to fit your needs */
+    height: 48px; /* Adjust this value to fit your needs */
+    transform: translate(-50%, -50%);
+    animation: bounce 2s infinite, fadeOut 2s infinite;
+}
 
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-15px);
+    }
+    60% {
+        transform: translateY(-7px);
+    }
+}
+
+@keyframes fadeOut {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.mousey {
+    width: 3px;
+    padding: 10px 15px;
+    height: 35px;
+    border: 2px solid white;
+    border-radius: 25px;
+    opacity: 0.75;
+    box-sizing: content-box;
+}
+
+.scroller {
+    width: 3px;
+    height: 10px;
+    border-radius: 25%;
+    background-color: white;
+    animation-name: scroll;
+    animation-duration: 2.2s;
+    animation-timing-function: cubic-bezier(1,0,0,1);
+    animation-iteration-count: infinite;
+}
+.scroll {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 48px; /* Adjust this value to fit your needs */
+    height: 92px; /* Adjust this value to fit your needs */
+}
+
+@keyframes scroll {
+    0% { opacity: 0; }
+    10% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(15px); opacity: 0;}
+}

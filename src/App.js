@@ -1,7 +1,9 @@
 import './App.css';
 import React, { useState } from "react";
 import Menu from "./Menu";
-import picWeb from "./picWebSite.png";
+import picForCvProj from "./picForCvProj.jpeg";
+import checkingCvsAndJobLogo from "./checkingCvsAndJobLogo.png";
+import scrollDowns from "./scrollDowns.png";
 import SearchJob from './SearchJob';
 
 function App() {
@@ -9,21 +11,21 @@ function App() {
 
     return (
         <div id="App">
-            <div className="backPicWeb">
-                <img
-                    className={"picWebSite"}
-                    src={picWeb}
-                    alt={"picWebSite"}
-                />
-                <div className="display-container">
-                    <button onClick={() => setPage("menu")} disabled={page === "menu"}>
-                        Menu
-                    </button>
-                    <button onClick={() => setPage("searchJob")} disabled={page === "searchJob"}>
-                        Search Job
-                    </button>
-                    {page === "menu" ? <Menu/> : <SearchJob/>}
+            <img className="logo" src={checkingCvsAndJobLogo} alt="Logo" />
+            <div className="scroll-downs">
+                <img className={"scroll"} src={scrollDowns} alt="Scroll down" />
+                <div className="mousey">
+                    <div className="scroller"></div>
                 </div>
+            </div>
+            <div className="display-container">
+                <button className="buttonApp" onClick={() => setPage("menu")} disabled={page === "menu"}>
+                    Menu
+                </button>
+                <button className="buttonApp" onClick={() => setPage("searchJob")} disabled={page === "searchJob"}>
+                    Search Job
+                </button>
+                {page === "menu" ? <Menu/> : <SearchJob/>}
             </div>
         </div>
     );

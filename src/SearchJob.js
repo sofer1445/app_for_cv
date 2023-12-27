@@ -1,12 +1,15 @@
 import axios from 'axios';
 import React from 'react';
 import spinner from './giphy.gif';
+import index, {select} from "async";
+import {text} from "react-table/src/filterTypes";
+import TheRightJob  from "./TheRightJob";
 
 class SearchJob extends React.Component {
     state = {
         loaded: 0,
         data: [],
-        selectedJob: '',
+        selectedJob: this.props.selectedJob,
         jobDetails: [],
         isLoading: false,
     };
@@ -16,11 +19,13 @@ class SearchJob extends React.Component {
             selectedJob: event.target.value,
         });
     }
-    handleFreeSearchChange = event => {
+    _handleFreeSearchChange = event => {
         this.setState({
             selectedJob: event.target.value,
         });
     }
+
+
 
     searchJob = async () => {
         this.setState({ isLoading: true }); // Set isLoading to true before fetching data
@@ -85,11 +90,12 @@ class SearchJob extends React.Component {
             <div>
                 <h2 className={"TitleSearch"}>Search Job</h2>
                 <select className="select-input" value={this.state.selectedJob} onChange={this.handleJobChange}>
+                    <option value="">Select Job</option>
                     {jobs.map((job, index) => (
                         <option key={index} value={job}>{job}</option>
                     ))}
                 </select>
-                <input className="input-text" type="text" placeholder={"free search"} value={this.state.selectedJob} onChange={this.handleFreeSearchChange} />
+                <input className="input-text" type="text" placeholder={"free search"} value={this.state.selectedJob} onChange={this._handleFreeSearchChange} />
                 <button onClick={this.searchJob} disabled={this.state.selectedJob === ''}>Search</button>
                 {this.state.isLoading ? <img className="spinner" src={spinner} alt="Loading..."/> : null}
                 {this.state.jobDetails.internetJobs ? this.formatJobDetails(this.state.jobDetails.internetJobs) : null}
