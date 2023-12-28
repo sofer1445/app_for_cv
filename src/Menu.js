@@ -6,7 +6,7 @@ import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
 import PopularWords from "./PopularWords";
 import NavLinkStyle from "./NavLinkStyle";
 import FileUpload from "./FileUpload";
-
+import SearchJob from './SearchJob';
 
 class Menu extends React.Component {
     state = {
@@ -21,6 +21,32 @@ class Menu extends React.Component {
         showNameFile: false,
     };
 
+    fileName = (string) => {
+        this.setState({
+            nameOfTheFile: string,
+        })
+        this.props.onFileNameChange(string)
+        return (
+            <div>
+                <h5 id={"nameOfFile"}>The file is: {this.state.nameOfTheFile}</h5>
+            </div>
+        )
+    }
+
+    extractTheNameFromTheString = (string) => {
+        let name = string.split("\\");
+        return name[name.length - 1];
+    }
+
+    componentDidMount = async () => {
+        await this.fetchData();
+    };
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.selectedJobIndex !== this.state.selectedJobIndex) {
+            this.fetchData();
+        }
+    }
 
     fetchData = async () => {
         const response = await axios.get("http://localhost:8080/api/file");
@@ -35,17 +61,6 @@ class Menu extends React.Component {
         });
     };
 
-    componentDidMount = async () => {
-        await this.fetchData();
-    };
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.selectedJobIndex !== this.state.selectedJobIndex) {
-            this.fetchData();
-        }
-
-    }
-
     buttonViewInformation = (indexJob) => {
         this.setState({
             showJobInformation: true,
@@ -53,31 +68,19 @@ class Menu extends React.Component {
         });
     };
 
-    buttonViewBestJob = () => {
-        console.log("buttonViewBestJob");
-        this.setState({
-            showBestJob: true,
-        });
-    }
-    fileName = (string) => {
-        this.setState({
-            nameOfTheFile: string,
-            // showNameFile: true,
-        })
-        return (
-            <div>
-                <h5 id={"nameOfFile"}>The file is: {this.state.nameOfTheFile}</h5>
+    renderJobList = () => {
+        return this.state.jobDescription.map((job, indexJob) => (
+            <div key={indexJob}>
+                <p id="Jobs">{job}</p>
+                <button
+                    id="buttonViewInformation"
+                    onClick={() => this.buttonViewInformation(indexJob)}
+                >
+                    View information
+                </button>
             </div>
-        )
-
-
+        ));
     }
-    extractTheNameFromTheString = (string) => {
-        let name = string.split("\\");
-        return name[name.length - 1];
-    }
-
-
 
     render() {
         const {
@@ -184,42 +187,21 @@ class Menu extends React.Component {
         }
 
         return (
-            <div>
+            <>
                 <h1>List Of Jobs</h1>
-                <div>
+                <FileUpload
+                    fileName={this.fileName}
+                />
+                {this.state.showNameFile && (
                     <div>
-                        <FileUpload
-                            fileName={this.fileName}
-                        />
-                        {this.state.showNameFile ? (
-                            <div>
-                                <h5 id={"nameOfFile"}>Presents data according to the following
-                                    CV: {this.extractTheNameFromTheString(this.state.nameOfTheFile)}</h5>
-                            </div>
-                        ) : null}
+                        <h5 id={"nameOfFile"}>Presents data according to the following
+                            CV: {this.extractTheNameFromTheString(this.state.nameOfTheFile)}</h5>
                     </div>
-
-                    {jobDescription.map((job, indexJob) => (
-                        <div key={indexJob}>
-                            <p id="Jobs">{job}</p>
-                            <button
-                                id="buttonViewInformation"
-                                onClick={() => this.buttonViewInformation(indexJob)}
-                            >
-                                View information
-                            </button>
-                        </div>
-                    ))}
-                    <div>
-
-
-                    </div>
-                </div>
-            </div>
+                )}
+                {this.renderJobList()}
+            </>
         );
     }
-
-
 }
 
 export default Menu;

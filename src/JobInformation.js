@@ -1,5 +1,6 @@
 import React from "react";
 
+
 function JobInformation({ job, listKeyWords, listCommonKeywords, listMissingKeywords, matchingPercentage }) {
     return (
         <div className="job-information">
@@ -9,31 +10,32 @@ function JobInformation({ job, listKeyWords, listCommonKeywords, listMissingKeyw
                 <p>
                     <strong>Matching Percentage:</strong> {matchingPercentage} % matching
                 </p>
-                <p>
-                    <strong>List of Common Keywords:</strong>
-                </p>
-                <ul>
-                    {listCommonKeywords.map((keyword, index) => (
-                        <li key={index}>{keyword}</li>
-                    ))}
-                </ul>
-                <p>
-                    <strong>List of Missing Keywords:</strong>
-                </p>
-                <ul>
-                    {listMissingKeywords.map((keyword, index) => (
-                        <li key={index}>{keyword}</li>
-                    ))}
-                </ul>
-                <p>
-                    <strong>List of Keywords:</strong>
-                </p>
-                <ul>
-                    {listKeyWords.map((keyword, index) => (
-                        <li key={index}>{keyword}</li>
-                    ))}
-                </ul>
-
+                <div className="keywords">
+                    <div className="common-keywords">
+                        <h3>Common Keywords</h3>
+                        <ul>
+                            {listCommonKeywords.map((keyword, index) => (
+                                <li key={index}>{keyword}</li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="missing-keywords">
+                        <h3>Missing Keywords</h3>
+                        <ul>
+                            {listMissingKeywords.map((keyword, index) => (
+                                <li key={index}>{keyword}</li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="all-keywords">
+                        <h3>All Keywords</h3>
+                        <ul>
+                            {listKeyWords.map((keyword, index) => (
+                                <li key={index}>{keyword}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     );

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import spinner from './giphy.gif';
 import {select} from "async";
+import FileUpload from "./FileUpload";
 
 
 class SearchJob extends React.Component {
@@ -27,6 +28,15 @@ class SearchJob extends React.Component {
         });
     }
 
+    // handleFileUpload = (event) => {
+    //     const file = event.target.files[0];
+    //     if (file) {
+    //         this.setState({
+    //             selectedFile: file,
+    //             loaded: 1,
+    //         })
+    //     }
+    // }
 
     searchJob = async () => {
         this.setState({isLoading: true}); // Set isLoading to true before fetching data
@@ -92,13 +102,13 @@ class SearchJob extends React.Component {
                                    rel="noopener noreferrer">Job Link</a></td>
                             <td>
                                 <ul>
+                                    <button onClick={() => this.jobSuitability(index)}
+                                            disabled={this.state.buttonSumOfCommonKeyWords}>Job Suitability
+                                    </button>
                                     {jobDetail.jobDetailText.map((text, index) => (
                                         <li key={index}>{text}</li>
                                     ))
                                     }
-                                    <button onClick={() => this.jobSuitability(index)}
-                                            disabled={this.state.buttonSumOfCommonKeyWords}>Job Suitability
-                                    </button>
                                 </ul>
                             </td>
                             {this.state.sumOfCommonKeyWords.length !== 0 && index === this.state.clickedJobIndex && (
@@ -131,9 +141,14 @@ class SearchJob extends React.Component {
     render() {
         const jobs = ['Software Engineer', 'Automation Engineer', 'DevOps Engineer', 'Frontend Developer', 'Backend Developer', 'Fullstack',
             'Software Tester', 'Web Developer', 'QA Automation',];
+        const cvFileName = this.props.cvFileName;
         return (
             <div>
                 <h2 className={"TitleSearch"}>Search Job</h2>
+                <h3 className={"input-text"}>Resume: {
+                    // if cvfile is empty, show "No file chosen", else show the file name
+                    cvFileName === null ? 'According to previous CVs' : cvFileName
+                }</h3>
                 <select className="select-input" value={this.state.selectedJob} onChange={this.handleJobChange}>
                     <option value="">Select Job</option>
                     {jobs.map((job, index) => (

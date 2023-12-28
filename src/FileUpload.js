@@ -3,6 +3,7 @@ import axios from "axios";
 import Menu from "./Menu";
 import NavLinkStyle from "./NavLinkStyle";
 import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
+import SearchJob from "./SearchJob";
 
 
 class FileUpload extends React.Component {
@@ -19,6 +20,7 @@ class FileUpload extends React.Component {
             loaded: 1,
             nameFile: event.target.files[0].name,
         })
+
 
     }
 

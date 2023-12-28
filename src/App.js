@@ -8,6 +8,7 @@ import SearchJob from './SearchJob';
 
 function App() {
     const [page, setPage] = useState("menu");
+    const [nameOfTheFile, setNameOfTheFile] = useState(null);
 
     return (
         <div id="App">
@@ -25,10 +26,10 @@ function App() {
                 <button className="buttonApp" onClick={() => setPage("searchJob")} disabled={page === "searchJob"}>
                     Search Job
                 </button>
-                {page === "menu" ? <Menu/> : <SearchJob/>}
+                {page === "menu" ? <Menu onFileNameChange={setNameOfTheFile}/> : <SearchJob cvFileName={nameOfTheFile}/>}
+
             </div>
         </div>
     );
 }
-
 export default App;
