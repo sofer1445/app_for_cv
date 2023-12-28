@@ -1,5 +1,6 @@
 import React from "react";
 import SearchJob from "./SearchJob";
+import axios from "axios";
 
 class TheRightJob extends React.Component {
     state = {
@@ -48,6 +49,23 @@ class TheRightJob extends React.Component {
             showBestJob: true,
         })
     };
+
+    // jobSuitability = () => {
+    //     // send post request to server to get the most suitable job
+    //     try{
+    //         const response = axios.post('http://localhost:8080/api/compatibilityTest', null, {
+    //             params: {
+    //                 jobDetailText: this.props.jobDetails,
+    //             }
+    //         });
+    //         this.setState({ sumOfCommonKeyWords: response.data });
+    //
+    //
+    //     }catch(error){
+    //         console.log(error);
+    //     }
+    // }
+
 
     renderTheMostSuitableJob = () => {
         console.log("renderTheMostSuitableJob");

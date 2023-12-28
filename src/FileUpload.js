@@ -56,7 +56,7 @@ class FileUpload extends React.Component {
                         <div className="col-md-6">
                             <form method="post" action="#" id="#">
                                 <div className="form-group files">
-                                    <label>Upload Your File </label>
+                                    <label className={"labelText"}>Upload Your File </label>
                                     <input type="file" className="form-control" multiple=""
                                            onChange={this.onChangeHandler}/>
                                 </div>
