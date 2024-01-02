@@ -5,10 +5,21 @@ import picForCvProj from "./picForCvProj.jpeg";
 import checkingCvsAndJobLogo from "./checkingCvsAndJobLogo.png";
 import scrollDowns from "./scrollDowns.png";
 import SearchJob from './SearchJob';
+import CheckLocalJobDescription from "./CheckLocalJobDescription";
 
 function App() {
     const [page, setPage] = useState("menu");
     const [nameOfTheFile, setNameOfTheFile] = useState(null);
+    const [showCheckLocalJobDescription, setShowCheckLocalJobDescription] = useState(false);
+
+    const toggleCheckLocalJobDescription = () => {
+        setShowCheckLocalJobDescription(!showCheckLocalJobDescription);
+    }
+
+    const handleButtonClick = (newPage) => {
+        setPage(newPage);
+        setShowCheckLocalJobDescription(false);
+    }
 
     return (
         <div id="App">
@@ -20,14 +31,17 @@ function App() {
                 </div>
             </div>
             <div className="display-container">
-                <button className="buttonApp" onClick={() => setPage("menu")} disabled={page === "menu"}>
+                <button className="buttonApp" onClick={() => handleButtonClick("menu")} disabled={page === "menu"}>
                     Menu
                 </button>
-                <button className="buttonApp" onClick={() => setPage("searchJob")} disabled={page === "searchJob"}>
+                <button className="buttonApp" onClick={() => handleButtonClick("searchJob")} disabled={page === "searchJob"}>
                     Search Job
                 </button>
+                <button className="buttonApp" onClick={toggleCheckLocalJobDescription}>
+                    To check a custom job description click here
+                </button>
+                {showCheckLocalJobDescription ? <CheckLocalJobDescription cvFileName={nameOfTheFile} /> : null}
                 {page === "menu" ? <Menu onFileNameChange={setNameOfTheFile}/> : <SearchJob cvFileName={nameOfTheFile}/>}
-
             </div>
         </div>
     );
