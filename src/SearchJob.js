@@ -57,7 +57,7 @@ class SearchJob extends React.Component {
     jobSuitability = async (index) => {
         try {
             const response = await axios.post('http://localhost:8080/api/compatibilityTest', {
-                jobDetailText: this.state.jobDetails.internetJobs[index].jobDetailText, // שולח את המשרה אבל לא עובד
+                jobDetailText: this.state.jobDetails.internetJobs[index].jobDetailText,
             });
             // this.setState({ sumOfCommonKeyWords: response.data });
             this.setState({sumOfCommonKeyWords: response.data});
@@ -167,4 +167,3 @@ class SearchJob extends React.Component {
 }
 
 export default SearchJob;
-
