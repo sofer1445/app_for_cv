@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
 import axios from "axios";
-import Menu from "./Menu";
-import NavLinkStyle from "./NavLinkStyle";
-import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
-import SearchJob from "./SearchJob";
+
 
 
 class FileUpload extends React.Component {
@@ -28,6 +25,10 @@ class FileUpload extends React.Component {
     onClickHandler = () => {
         const data = new FormData()
         for (let x = 0; x < this.state.selectedFile.length; x++) {
+            if (this.state.selectedFile[x].type !== "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+                alert("Only .docx files are allowed!");
+                return;
+            }
             data.append('file', this.state.selectedFile[x])
         }
         axios.post("http://localhost:8080/api/upload", data, {
@@ -40,7 +41,6 @@ class FileUpload extends React.Component {
                     data: res.data,
                 })
             })
-
     }
 
 
