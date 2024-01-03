@@ -1,7 +1,6 @@
 import './App.css';
 import React, { useState } from "react";
 import Menu from "./Menu";
-import picForCvProj from "./picForCvProj.jpeg";
 import checkingCvsAndJobLogo from "./checkingCvsAndJobLogo.png";
 import scrollDowns from "./scrollDowns.png";
 import SearchJob from './SearchJob';

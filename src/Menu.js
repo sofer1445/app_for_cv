@@ -6,7 +6,6 @@ import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom" ;
 import PopularWords from "./PopularWords";
 import NavLinkStyle from "./NavLinkStyle";
 import FileUpload from "./FileUpload";
-import SearchJob from './SearchJob';
 
 class Menu extends React.Component {
     state = {
@@ -188,17 +187,21 @@ class Menu extends React.Component {
 
         return (
             <>
-                <h1>List Of Jobs</h1>
+                <h1 id={"WebTitle"} style={{ color: '#34495e', textAlign: 'center', backgroundColor: '#ecf0f1', fontFamily: 'Arial' }}>Welcome to the CV checking and job search website</h1>
+                <h2 id={"secondTitle"} style={{ color: '#2c3e50', textAlign: 'center', backgroundColor: '#bdc3c7', fontFamily: 'Arial' }}>List Of Jobs</h2>
                 <FileUpload
                     fileName={this.fileName}
+                    style={{ display: 'flex', justifyContent: 'center' }}
                 />
                 {this.state.showNameFile && (
-                    <div>
-                        <h5 id={"nameOfFile"}>Presents data according to the following
+                    <div style={{ textAlign: 'center' }}>
+                        <h5 id={"nameOfFile"} style={{ color: '#7f8c8d' }}>Presents data according to the following
                             CV: {this.extractTheNameFromTheString(this.state.nameOfTheFile)}</h5>
                     </div>
                 )}
-                {this.renderJobList()}
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    {this.renderJobList()}
+                </div>
             </>
         );
     }
