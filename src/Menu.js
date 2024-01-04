@@ -66,19 +66,29 @@ class Menu extends React.Component {
             selectedJobIndex: indexJob,
         });
     };
+    handleJobSelection = (event) => {
+        this.setState({ selectedJob: event.target.value });
+    }
 
     renderJobList = () => {
-        return this.state.jobDescription.map((job, indexJob) => (
-            <div key={indexJob}>
-                <p id="Jobs">{job}</p>
+        return (
+            <div>
+                <select className={"select-input"} onChange={this.handleJobSelection}>
+                    <option value={""}>Select Job</option>
+                    {this.state.jobDescription.map((job, indexJob) => (
+                        <option key={indexJob} value={indexJob}>
+                            {job}
+                        </option>
+                    ))}
+                </select>
                 <button
                     id="buttonViewInformation"
-                    onClick={() => this.buttonViewInformation(indexJob)}
+                    onClick={() => this.buttonViewInformation(this.state.selectedJob)}
                 >
                     View information
                 </button>
             </div>
-        ));
+        );
     }
 
     render() {
@@ -187,19 +197,30 @@ class Menu extends React.Component {
 
         return (
             <>
-                <h1 id={"WebTitle"} style={{ color: '#34495e', textAlign: 'center', backgroundColor: '#ecf0f1', fontFamily: 'Arial' }}>Welcome to the CV checking and job search website</h1>
-                <h2 id={"secondTitle"} style={{ color: '#2c3e50', textAlign: 'center', backgroundColor: '#bdc3c7', fontFamily: 'Arial' }}>List Of Jobs</h2>
+                <h1 id={"WebTitle"} style={{
+                    color: '#34495e',
+                    textAlign: 'center',
+                    backgroundColor: '#ecf0f1',
+                    fontFamily: 'Arial'
+                }}>Welcome to the CV checking and job search website</h1>
                 <FileUpload
                     fileName={this.fileName}
-                    style={{ display: 'flex', justifyContent: 'center' }}
+                    style={{display: 'flex', justifyContent: 'center'}}
                 />
+                <h2 id={"secondTitle"} style={{
+                    color: '#2c3e50',
+                    textAlign: 'center',
+                    backgroundColor: '#bdc3c7',
+                    fontFamily: 'Arial'
+                }}>List Of Jobs</h2>
+
                 {this.state.showNameFile && (
-                    <div style={{ textAlign: 'center' }}>
-                        <h5 id={"nameOfFile"} style={{ color: '#7f8c8d' }}>Presents data according to the following
+                    <div style={{textAlign: 'center'}}>
+                        <h5 id={"nameOfFile"} style={{color: '#7f8c8d'}}>Presents data according to the following
                             CV: {this.extractTheNameFromTheString(this.state.nameOfTheFile)}</h5>
                     </div>
                 )}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     {this.renderJobList()}
                 </div>
             </>

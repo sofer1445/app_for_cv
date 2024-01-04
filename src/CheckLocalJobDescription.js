@@ -30,7 +30,7 @@ class CheckLocalJobDescription extends React.Component {
         return (
             <div>
                 <textarea value={this.state.jobDescription} onChange={this.handleInputChange} />
-                <button onClick={this.checkDes}>Check Job Description</button>
+                <button className={"buttonCheckCustJob"} onClick={this.checkDes} disabled={this.state.jobDescription === ''}>Check Job Description </button>
                 {this.state.showResults ? (
                     <div>
                         <h2>Results:</h2>

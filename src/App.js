@@ -36,10 +36,11 @@ function App() {
                 <button className="buttonApp" onClick={() => handleButtonClick("searchJob")} disabled={page === "searchJob"}>
                     Search Job
                 </button>
-                <button className="buttonApp" onClick={toggleCheckLocalJobDescription}>
-                    To check a custom job description click here
+                <button className="buttonApp" onClick={toggleCheckLocalJobDescription}
+                        title="To check a custom job description click here">
+                    Custom inspection
                 </button>
-                {showCheckLocalJobDescription ? <CheckLocalJobDescription cvFileName={nameOfTheFile} /> : null}
+                {showCheckLocalJobDescription ? <CheckLocalJobDescription cvFileName={nameOfTheFile}/> : null}
                 {page === "menu" ? <Menu onFileNameChange={setNameOfTheFile}/> : <SearchJob cvFileName={nameOfTheFile}/>}
             </div>
         </div>
