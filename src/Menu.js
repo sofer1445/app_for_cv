@@ -23,14 +23,15 @@ class Menu extends React.Component {
     fileName = (string) => {
         this.setState({
             nameOfTheFile: string,
-        })
-        this.props.onFileNameChange(string)
-        return (
-            <div>
-                <h5 id={"nameOfFile"}>The file is: {this.state.nameOfTheFile}</h5>
-            </div>
-        )
+        }, () => {
+            this.props.onFileNameChange(string);
+        });
     }
+    // this.setState({
+    //             nameOfTheFile: string,
+    //         }, () => {
+    //             return this.props.onFileNameChange(string);
+    //         });
 
     extractTheNameFromTheString = (string) => {
         let name = string.split("\\");
@@ -214,7 +215,7 @@ class Menu extends React.Component {
                     fontFamily: 'Arial'
                 }}>List Of Jobs</h2>
 
-                {this.state.showNameFile && (
+                {this.state.showNameFile && this.state.nameOfTheFile && (
                     <div style={{textAlign: 'center'}}>
                         <h5 id={"nameOfFile"} style={{color: '#7f8c8d'}}>Presents data according to the following
                             CV: {this.extractTheNameFromTheString(this.state.nameOfTheFile)}</h5>

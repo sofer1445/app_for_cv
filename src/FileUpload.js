@@ -40,6 +40,7 @@ class FileUpload extends React.Component {
                     loaded: 2,
                     data: res.data,
                 })
+                this.props.fileName(this.state.nameFile);
             })
     }
 
@@ -51,7 +52,11 @@ class FileUpload extends React.Component {
                 {this.state.loaded === 2 ?
                     <div>
                         <p>File uploaded successfully</p>
-                        {this.props.fileName(this.state.nameFile)}
+                        {this.state.nameFile !== null ?
+                            <p>File name: {this.state.nameFile}</p>
+                            :
+                            null
+                        }
                     </div>
                     :
                     <div className="row">
