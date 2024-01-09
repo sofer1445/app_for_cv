@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from "axios";
-
-
+import './styles/FileUpload.css';
 
 class FileUpload extends React.Component {
     state = {
@@ -17,10 +16,7 @@ class FileUpload extends React.Component {
             loaded: 1,
             nameFile: event.target.files[0].name,
         })
-
-
     }
-
 
     onClickHandler = () => {
         const data = new FormData()
@@ -44,11 +40,9 @@ class FileUpload extends React.Component {
             })
     }
 
-
-
     render() {
         return (
-            <div className="container">
+            <div className="FileUpload-container">
                 {this.state.loaded === 2 ?
                     <div>
                         <p>File uploaded successfully</p>
@@ -59,23 +53,29 @@ class FileUpload extends React.Component {
                         }
                     </div>
                     :
-                    <div className="row">
-                        <div className="col-md-6">
+                    <div className="FileUpload-row">
+                        <div className="FileUpload-col-md-6">
                             <form method="post" action="#" id="#">
-                                <div className="form-group files">
-                                    <label className={"labelText"}>Upload Your File </label>
-                                    <input type="file" className="form-control" multiple=""
-                                           onChange={this.onChangeHandler}/>
-                                </div>
-                                <div className="form-group">
-                                    <button type="button" className="btn btn-success btn-block" disabled={!this.state.loaded}
-                                            onClick={this.onClickHandler}>Upload
-                                    </button>
+                                <div>
+                                    <div className="FileUpload-form-group files">
+                                        <input type="file" className="FileUpload-form-control" id="fileUpload"
+                                               multiple=""
+                                               onChange={this.onChangeHandler} style={{display: 'none'}}/>
+                                        <label htmlFor="fileUpload" className={"FileUpload-labelText"}>Upload Your
+                                            File</label>
+                                    </div>
+                                    <div className="FileUpload-form-group">
+                                        <button type="button" className="FileUpload-btn-success btn-block"
+                                                disabled={!this.state.loaded}
+                                                onClick={this.onClickHandler}>Upload
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 }
+                {this.state.loaded === 1 && <p>File is being uploaded...</p>}
             </div>
         );
     }

@@ -1,0 +1,82 @@
+.TheRightJob-the-right-job {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+}
+
+.TheRightJob-the-right-job th, .TheRightJob-the-right-job td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+.TheRightJob-the-right-job th {
+    background-image: linear-gradient(to bottom, #f5f5dc, #e5e5ca);
+}
+
+.TheRightJob-the-right-job tr:nth-child(even) {
+    background-color: #a9a9a9;
+}
+.TheRightJob-the-right-job tr:nth-child(odd) {
+    background-color: #201f2a;
+}
+
+
+.TheRightJob-pOfTheRight {
+    font-size: 1.1em;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px #000000;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(90, 90, 90, 0.7);
+    margin-bottom: 20px;
+}
+
+.TheRightJob-keywords-container {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+}
+
+.TheRightJob-keywords-container div {
+    margin-bottom: 20px;
+}
+
+.TheRightJob-keyword-section {
+    margin-bottom: 20px;
+}
+
+.TheRightJob-keyword-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+}
+
+.TheRightJob-keyword-table td {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fdf5e6;
+}
+
+.TheRightJob-job-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.TheRightJob-job-name {
+    font-size: 1.6em;
+    color: #333;
+    margin-bottom: 10px;
+}
+.TheRightJob-section-header{
+    color: #141427;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    text-decoration: underline;
+
+}
+
+

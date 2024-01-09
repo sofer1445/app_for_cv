@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import './styles/CheckLocalJobDescription.css';
 
 class CheckLocalJobDescription extends React.Component {
     state = {
@@ -29,13 +30,13 @@ class CheckLocalJobDescription extends React.Component {
         let color = `rgb(0, ${green}, 0)`;
         return (
             <div>
-                <textarea value={this.state.jobDescription} onChange={this.handleInputChange} />
-                <button className={"buttonCheckCustJob"} onClick={this.checkDes} disabled={this.state.jobDescription === ''}>Check Job Description </button>
+                <textarea className={"CheckLocalJobDescription-textarea"} value={this.state.jobDescription} onChange={this.handleInputChange} />
+                <button className={"CheckLocalJobDescription-buttonCheckCustJob"} onClick={this.checkDes} disabled={this.state.jobDescription === ''}>Check Job Description </button>
                 {this.state.showResults ? (
                     <div>
-                        <h2>Results:</h2>
-                        <p className={"pOfTheRight"}>Resume: {this.props.cvFileName}</p>
-                        <table>
+                        <h2 className={"CheckLocalJobDescription-h2"}>Results:</h2>
+                        <p className={"CheckLocalJobDescription-pOfTheRight"}>Resume: {this.props.cvFileName}</p>
+                        <table className={"CheckLocalJobDescription-table"}>
                             <tbody>
                             <tr>
                                 <td>

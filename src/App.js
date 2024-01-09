@@ -1,7 +1,7 @@
-import './App.css';
+import './styles/App.css';
 import React, { useState } from "react";
 import Menu from "./Menu";
-import checkingCvsAndJobLogo from "./checkingCvsAndJobLogo.png";
+import checkingCvsAndJobLogo from "./myLogo.png";
 import scrollDowns from "./scrollDowns.png";
 import SearchJob from './SearchJob';
 import CheckLocalJobDescription from "./CheckLocalJobDescription";
@@ -21,22 +21,22 @@ function App() {
     }
 
     return (
-        <div id="App">
-            <img className="logo" src={checkingCvsAndJobLogo} alt="Logo" />
-            <div className="scroll-downs">
-                <img className={"scroll"} src={scrollDowns} alt="Scroll down" />
-                <div className="mousey">
-                    <div className="scroller"></div>
+        <div id="App-App">
+            <img className="App-logo" src={checkingCvsAndJobLogo} alt="Logo" />
+            <div className="App-scroll-downs">
+                <img className={"App-scroll"} src={scrollDowns} alt="Scroll down" />
+                <div className="App-mousey">
+                    <div className="App-scroller"></div>
                 </div>
             </div>
-            <div className="display-container">
-                <button className="buttonApp" onClick={() => handleButtonClick("menu")} disabled={page === "menu"}>
+            <div className="App-display-container">
+                <button className="App-buttonApp" onClick={() => handleButtonClick("menu")} disabled={page === "menu"}>
                     Menu
                 </button>
-                <button className="buttonApp" onClick={() => handleButtonClick("searchJob")} disabled={page === "searchJob"}>
+                <button className="App-buttonApp" onClick={() => handleButtonClick("searchJob")} disabled={page === "searchJob"}>
                     Search Job
                 </button>
-                <button className="buttonApp" onClick={toggleCheckLocalJobDescription}
+                <button className="App-buttonApp" onClick={toggleCheckLocalJobDescription}
                         title="To check a custom job description click here">
                     Custom inspection
                 </button>

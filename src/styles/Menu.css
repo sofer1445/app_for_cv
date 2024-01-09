@@ -1,0 +1,91 @@
+#Menu-WebTitle {
+    font-size: 1.7em;
+    color: #ffffff;
+    text-shadow: 2px 2px 2px #000000;
+    text-align: center;
+    padding: 20px;
+    background-color: #3498db;
+    margin-bottom: 20px;
+    position: relative;
+    top: -50px;
+}
+
+.Menu-select-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #141427;
+    background-color: transparent; /* שינוי הרקע לשקוף */
+    border-radius: 4px;
+}
+
+#Menu-buttonViewInformation {
+    position: relative;
+    top: 0;
+}
+
+.Menu-job-information-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.Menu-job-information {
+    flex: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.Menu-links-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.Menu-links a {
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.Menu-links a:hover {
+    color: #ff5722;
+    background-color: rgba(90, 90, 90, 0.8);
+}
+
+#Menu-secondTitle {
+    font-size: 1.7em;
+    color: #ffffff;
+    text-shadow: 2px 2px 2px #000000;
+    text-align: center;
+    padding: 20px;
+    background-color: #3498db;
+    margin-bottom: 20px;
+    position: relative;
+    top: -650px;
+}
+.Menu-renderJobList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    /*margin: 0 auto;*/
+    margin-top: -600px; /* הוספת מרווח למעלה */
+}
+#Menu-nameOfFile{
+    color: #ffffff;
+    font-size: 1.5em;
+    text-align: center;
+    box-shadow: #a5a5a5;
+    background-color: rgba(160, 69, 69, 0.24);
+}

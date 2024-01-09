@@ -1,0 +1,111 @@
+/* General styles for the Job Information component */
+.JobInformation-job-information {
+    width: 80%;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #faebd7;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(255, 235, 205, 0.2);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Styles for the Job Title */
+.JobInformation-job-title {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Styles for the Job Details */
+.JobInformation-job-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Styles for the Keywords Table */
+.JobInformation-keywords-table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    border-top: 1px solid #ddd;
+    font-size: 0.9em;
+}
+
+/* Styles for the Table Headers and Cells */
+.JobInformation-keywords-table th,
+.JobInformation-keywords-table td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+}
+
+/* Styles for the Table Headers */
+.JobInformation-keywords-table th {
+    background-color: #e9ecef;
+}
+
+/* Styles for the Keyword Lists */
+.JobInformation-common-keywords,
+.JobInformation-missing-keywords,
+.JobInformation-all-keywords {
+    width: 30%;
+    vertical-align: top;
+}
+
+/* Styles for the Individual Keywords */
+.JobInformation-common-keyword,
+.JobInformation-missing-keyword,
+.JobInformation-all-keyword {
+    list-style-type: disc;
+    margin-bottom: 5px;
+    box-shadow: none; /* הסרת הצל */
+}
+
+/* Styles for the Keyword Divider */
+.JobInformation-keyword-divider {
+    width: 1px;
+    height: 100%;
+    background-color: #ddd;
+}
+
+/* Styles for the Matching Percentage */
+.JobInformation-matching-percentage {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 40px;
+}
+
+/* Styles for the Individual Keywords with specific colors */
+.JobInformation-common-keyword{
+    color: #ffffff;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: rgba(47, 79, 79, 0.5);
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.JobInformation-missing-keyword{
+    color: #cd5c5c;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: rgba(47, 79, 79, 0.5);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.JobInformation-all-keyword{
+    color: #f0e68c;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: rgba(47, 79, 79, 0.5);
+    border-radius: 5px;
+    padding: 5px;
+}

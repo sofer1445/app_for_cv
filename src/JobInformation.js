@@ -1,41 +1,47 @@
 import React from "react";
-
+import "./styles/JobInformation.css";
 
 function JobInformation({ job, listKeyWords, listCommonKeywords, listMissingKeywords, matchingPercentage }) {
     return (
-        <div className="job-information">
-            <h1>Job Information</h1>
-            <div className="job-details">
-                <h2>Job: {job}</h2>
-                <p>
+        <div className="JobInformation-job-information">
+            <h1 className="JobInformation-job-title">{job}</h1>
+            <div className="JobInformation-job-details">
+                <table className="JobInformation-keywords-table">
+                    <tbody>
+                    {/* **הוספת קווים נפרדים בין רשימות המפתחות** */}
+                    <tr>
+                        <td className="JobInformation-common-keywords">
+                            <h2>Common Keywords</h2>
+                            <ul>
+                                {listCommonKeywords.map((keyword, index) => (
+                                    <li key={index} className="JobInformation-common-keyword">{keyword}</li>
+                                ))}
+                            </ul>
+                        </td>
+                        <hr className="JobInformation-keyword-divider" />
+                        <td className="JobInformation-missing-keywords">
+                            <h2>Missing Keywords</h2>
+                            <ul>
+                                {listMissingKeywords.map((keyword, index) => (
+                                    <li key={index} className="JobInformation-missing-keyword">{keyword}</li>
+                                ))}
+                            </ul>
+                        </td>
+                        <hr className="JobInformation-keyword-divider" />
+                        <td className="JobInformation-all-keywords">
+                            <h2>All Keywords</h2>
+                            <ul>
+                                {listKeyWords.map((keyword, index) => (
+                                    <li key={index} className="JobInformation-all-keyword">{keyword}</li>
+                                ))}
+                            </ul>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p className="JobInformation-matching-percentage">
                     <strong>Matching Percentage:</strong> {matchingPercentage} % matching
                 </p>
-                <div className="keywords">
-                    <div className="common-keywords">
-                        <h3>Common Keywords</h3>
-                        <ul>
-                            {listCommonKeywords.map((keyword, index) => (
-                                <li key={index}>{keyword}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className="missing-keywords">
-                        <h3>Missing Keywords</h3>
-                        <ul>
-                            {listMissingKeywords.map((keyword, index) => (
-                                <li key={index}>{keyword}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className="all-keywords">
-                        <h3>All Keywords</h3>
-                        <ul>
-                            {listKeyWords.map((keyword, index) => (
-                                <li key={index}>{keyword}</li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     );

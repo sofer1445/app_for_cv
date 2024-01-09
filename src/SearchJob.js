@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import spinner from './giphy.gif';
 import {select} from "async";
-import FileUpload from "./FileUpload";
+import "./styles/SearchJob.css";
 
 
 class SearchJob extends React.Component {
@@ -77,17 +77,17 @@ class SearchJob extends React.Component {
         return (
             internetJobs.map((jobDetail, index) => (
                 jobDetail !== null && (
-                    <table key={index} className="job-table">
+                    <table key={index} className="SearchJob-job-table">
                         <thead>
                         <tr>
-                            <th>Job Name</th>
-                            <th>Company Name</th>
-                            <th>Website</th>
-                            <th>Location</th>
-                            <th>Date</th>
-                            <th>Job Link</th>
-                            <th>Job Detail Text</th>
-                            <th>Overlapping keywords</th>
+                            <th className={"SearchJob-th-jobDetail"}>Job Name</th>
+                            <th className={"SearchJob-th-jobDetail"}>Company Name</th>
+                            <th className={"SearchJob-th-jobDetail"}>Website</th>
+                            <th className={"SearchJob-th-jobDetail"}>Location</th>
+                            <th className={"SearchJob-th-jobDetail"}>Date</th>
+                            <th className={"SearchJob-th-jobDetail"}>Job Link</th>
+                            <th className={"SearchJob-th-jobDetail"}>Job Detail Text</th>
+                            <th className={"SearchJob-th-jobDetail"}>Overlapping keywords</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -101,24 +101,23 @@ class SearchJob extends React.Component {
                             <td><a href={"https://www.drushim.co.il/" + jobDetail.jobLink} target="_blank"
                                    rel="noopener noreferrer">Job Link</a></td>
                             <td>
-                                <ul>
+                                <ul style={{maxHeight: '250px', overflowY: 'scroll'}}>
                                     <button onClick={() => this.jobSuitability(index)}
                                             disabled={this.state.buttonSumOfCommonKeyWords}>Job Suitability
                                     </button>
                                     {jobDetail.jobDetailText.map((text, index) => (
                                         <li key={index}>{text}</li>
-                                    ))
-                                    }
+                                    ))}
                                 </ul>
                             </td>
                             {this.state.sumOfCommonKeyWords.length !== 0 && index === this.state.clickedJobIndex && (
-                                <td className={"tdShowSum"}>
-                            <span style={{color: 'red'}}>
-                                {this.state.sumOfCommonKeyWords[0] + " Missing key words, "}
-                            </span>
+                                <td className={"SearchJob-tdShowSum"}>
+                        <span style={{color: 'red'}}>
+                            {this.state.sumOfCommonKeyWords[0] + " Missing key words, "}
+                        </span>
                                     <span style={{color: 'green'}}>
-                                {this.state.sumOfCommonKeyWords[1] + " Common key words. "}
-                            </span>
+                            {this.state.sumOfCommonKeyWords[1] + " Common key words. "}
+                        </span>
                                     <div style={{width: '100%', backgroundColor: '#f3f3f3'}}>
                                         <div style={{
                                             width: `${percentage}%`,
@@ -144,21 +143,21 @@ class SearchJob extends React.Component {
         const cvFileName = this.props.cvFileName;
         return (
             <div>
-                <h2 className={"TitleSearch"}>Search Job</h2>
-                <h3 className={"input-text"}>Resume: {
+                <h2 className={"SearchJob-TitleSearch"}>Search Job</h2>
+                <h3 className={"SearchJob-input-text"}>Resume: {
                     // if cvfile is empty, show "No file chosen", else show the file name
                     cvFileName === null ? 'According to previous CVs' : cvFileName
                 }</h3>
-                <select className="select-input" value={this.state.selectedJob} onChange={this.handleJobChange}>
+                <select className="SearchJob-select-input" value={this.state.selectedJob} onChange={this.handleJobChange}>
                     <option value="">Select Job</option>
                     {jobs.map((job, index) => (
                         <option key={index} value={job}>{job}</option>
                     ))}
                 </select>
-                <input className="input-text" type="text" placeholder={"free search"} value={this.state.selectedJob}
+                <input className="SearchJob-input-text" type="text" placeholder={"free search"} value={this.state.selectedJob}
                        onChange={this._handleFreeSearchChange}/>
                 <button onClick={this.searchJob} disabled={this.state.selectedJob === ''}>Search</button>
-                {this.state.isLoading ? <img className="spinner" src={spinner} alt="Loading..."/> : null}
+                {this.state.isLoading ? <img className="SearchJob-spinner" src={spinner} alt="Loading..."/> : null}
                 {this.state.jobDetails.internetJobs ? this.formatJobDetails(this.state.jobDetails.internetJobs) : null}
 
             </div>

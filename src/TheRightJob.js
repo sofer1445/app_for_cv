@@ -1,5 +1,6 @@
 import React from "react";
 import SearchJob from "./SearchJob";
+import "./styles/TheRightJob.css";
 
 class TheRightJob extends React.Component {
     state = {
@@ -52,29 +53,31 @@ class TheRightJob extends React.Component {
 
     renderTheMostSuitableJob = () => {
         return (
-            <div className="the-right-job">
-                <h2>The Most Suitable Job:</h2>
-                <h3>{this.state.theMostSuitableJob}</h3>
-                <div className="keywords-container">
-                    <div>
-                        <p className={"pOfTheRight"}>List of Common Keywords: </p>
-                        <table>
+            <div className="TheRightJob-the-right-job">
+                <h2 className="TheRightJob-job-title">The Most Suitable Job:</h2>
+                <h3 className="TheRightJob-job-name">{this.state.theMostSuitableJob}</h3>
+
+                <div className="TheRightJob-keywords-container">
+                    <div className="TheRightJob-keyword-section">
+                        <p className="TheRightJob-section-header">Common Keywords:</p>
+                        <table className="TheRightJob-keyword-table">
                             <tbody>
                             {this.commonKeyWords.map((keyword, index) => (
                                 <tr key={index}>
-                                    <td>{keyword}</td>
+                                    <td className="TheRightJob-keyword">{keyword}</td>
                                 </tr>
                             ))}
                             </tbody>
                         </table>
                     </div>
-                    <div>
-                        <p className={"pOfTheRight"}>List of Missing Keywords: </p>
-                        <table>
+
+                    <div className="TheRightJob-keyword-section">
+                        <p className="TheRightJob-section-header">Missing Keywords:</p>
+                        <table className="TheRightJob-keyword-table">
                             <tbody>
                             {this.missingKeyWords.map((keyword, index) => (
                                 <tr key={index}>
-                                    <td>{keyword}</td>
+                                    <td className="TheRightJob-keyword">{keyword}</td>
                                 </tr>
                             ))}
                             </tbody>
@@ -86,12 +89,12 @@ class TheRightJob extends React.Component {
     };
 
 
+
     toggleSearchJob = () => {
         this.setState(prevState => ({
             showSearchJob: !prevState.showSearchJob
         }));
     }
-
 
 
     render() {
@@ -101,12 +104,13 @@ class TheRightJob extends React.Component {
                     <button onClick={this.getTheMostSuitableJob}>View The Most Suitable Job</button>
                     {this.state.showBestJob ? this.renderTheMostSuitableJob() : null}
                 </div>
-                <div className={"viewVacancies"}>
+                <div className={"TheRightJob-viewVacancies"}>
                     <button onClick={this.toggleSearchJob} disabled={!this.state.showBestJob}>View Vacancies</button>
                 </div>
-                {this.state.showSearchJob ? <SearchJob selectedJob={this.state.theMostSuitableJob} /> : null}
+                {this.state.showSearchJob ? <SearchJob selectedJob={this.state.theMostSuitableJob}/> : null}
             </div>
         );
     }
 }
+
 export default TheRightJob;

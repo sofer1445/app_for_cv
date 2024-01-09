@@ -1,4 +1,6 @@
 import React from "react";
+import "./styles/PopulerWords.css";
+
 
 class PopularWords extends React.Component {
     state = {
@@ -54,9 +56,9 @@ class PopularWords extends React.Component {
     renderPopularWords = () => {
         console.log("renderPopularWords");
         return (
-            <div className={"popular-words"}>
-                <h1 id={"TitlePop"}>Popular Words ({this.state.popularWords.length}) </h1>
-                <ul className={"popWord"}>
+            <div className={"PopularWords-popular-words"}>
+                <h1 id={"PopularWords-TitlePop"}>Popular Words ({this.state.popularWords.length}) </h1>
+                <ul className={"PopularWords-popWord"}>
                     {this.state.popularWords.map((keyword, index) => (
                         <li key={index}>{keyword}</li>
                     ))}
@@ -69,7 +71,7 @@ class PopularWords extends React.Component {
     render() {
         console.log("render");
         return (
-            <div className={"popular-words"}>
+            <div className={"PopularWords-popular-words"}>
                 <button onClick={this.getPopularWords}>Popular Keywords </button>
                 {this.state.showPopularWords ? this.renderPopularWords() : null}
             </div>

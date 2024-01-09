@@ -1,0 +1,107 @@
+.FileUpload-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1em;
+    box-sizing: border-box;
+    color: #ffffff;
+    text-shadow: 2px 2px 2px #000000;
+}
+
+.FileUpload-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.FileUpload-col-md-6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 365px;
+    height: 300px;
+}
+
+.FileUpload-form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.FileUpload-form-group.files {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.FileUpload-form-group.files input[type="file"] {
+    visibility: hidden;
+    display: none;
+}
+
+.FileUpload-form-group.files label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #d7d7d7;
+    color: #141427;
+    box-shadow: 0px 2px 4px rgba(90, 90, 90, 0.71); /* צל תלת-ממדי */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 428px; /* הגדלת רוחב תיבת בחירת הקובץ */
+    margin-top: -700px; /* הזזת תיבת בחירת הקובץ והכפתור כמה פיקסלים למעלה */
+    border-radius: 10px; /* פינות מעוגלות */
+
+}
+
+.FileUpload-form-group.files label:hover {
+    background-color: rgb(76, 104, 175);
+}
+.FileUpload-btn-success.btn-block {
+    /* מראה כללי */
+    background-color: #4CAF50; /* ירוק מלכותי */
+    background-image: linear-gradient(135deg, #4CAF50 0%, #8E54E9 100%); /* גרדיאנט ירוק-סגול */
+    border: none; /* ללא גבול */
+    color: #ffffff; /* טקסט לבן */
+    text-shadow: 2px 2px 4px #000000; /* צללה לטקסט */
+    font-size: 16px; /* גודל גופן 16px */
+    padding: 10px 20px; /* ריפוד פנימי 10px 20px */
+    border-radius: 5px; /* פינות מעוגלות */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4); /* צל תלת-ממדי */
+    cursor: pointer; /* סמן עכבר רלוונטי */
+    transition: all 0.3s ease-in-out; /* אנימציות מעבר חלקות */
+    margin-top: -615px; /* הזזת תיבת בחירת הקובץ והכפתור כמה פיקסלים למעלה */
+
+
+    /* מראה בעת מעבר עכבר */
+    &:hover {
+        background-color: #5e72b8; /* גוון כחול עמוק יותר */
+        transform: translateY(-2px); /* הרמה קלה */
+    }
+
+    /* מראה בעת לחיצה */
+    &:active {
+        background-color: #435a9f; /* כחול עשיר */
+        transform: translateY(2px); /* הורדה קלה */
+    }
+
+    /* מראה בעת נטרול */
+    &:disabled {
+        background-color: #a5a5a5; /* אפור בהיר */
+        cursor: not-allowed; /* סמן עכבר מתאים למצב לא פעיל */
+    }
+}
