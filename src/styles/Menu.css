@@ -9,6 +9,9 @@
     position: relative;
     top: -50px;
 }
+#Menu-SelectOp{
+    background: #a5a5a5;
+}
 
 .Menu-select-input {
     width: 100%;
@@ -16,7 +19,8 @@
     margin: 10px 0;
     box-sizing: border-box;
     border: 1px solid #141427;
-    background-color: transparent; /* שינוי הרקע לשקוף */
+    /*background-color: transparent; !* שינוי הרקע לשקוף *!*/
+    background-color: rgb(255, 255, 255);
     border-radius: 4px;
 }
 
@@ -89,3 +93,27 @@
     box-shadow: #a5a5a5;
     background-color: rgba(160, 69, 69, 0.24);
 }
+
+.Menu-back-button {
+    position: absolute;
+    top: 165px;
+    left: 215px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #232323;
+    color: #ffffff;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    box-shadow: 0 0 10px #000000;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    &:hover {
+        background-color: #333333;
+    }
+}
+
+
+

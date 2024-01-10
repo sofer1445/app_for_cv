@@ -78,7 +78,7 @@ class Menu extends React.Component {
         return (
             <div className={"Menu-select and button"}>
                 <select className={"Menu-select-input"} onChange={this.handleJobSelection}>
-                    <option value={""}>Select Job</option>
+                    <option id={"Menu-SelectOp"} value={""}>Select Job</option>
                     {this.state.jobDescription.map((job, indexJob) => (
                         <option key={indexJob} value={indexJob}>
                             {job}
@@ -118,7 +118,7 @@ class Menu extends React.Component {
                 <div className="Menu-job-information-container">
                     <div className="Menu-job-information">
                         <button
-                            className="Menu-button"
+                            className="Menu-back-button"
                             onClick={() =>
                                 this.setState({
                                     showJobInformation: false,

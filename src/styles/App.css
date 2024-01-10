@@ -608,6 +608,11 @@
     width: 365px;
     height: 300px;
     transform: translateY(-50%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.App-logo:hover {
+    transform: translateY(-50%) rotate(360deg);
 }
 
 .App-display-container {
@@ -655,6 +660,7 @@
     animation-iteration-count: infinite;
 }
 
+
 .App-buttonApp {
     background-color: #4c68af;
     background-image: linear-gradient(135deg, #4c68af 0%, #8e54e9 100%);
@@ -670,8 +676,7 @@
     cursor: pointer;
     border-radius: 12px;
     box-shadow: 0 9px 15px rgba(0, 0, 0, 0.15);
-    position: absolute;
-    left: 0;
+    position: fixed;
     width: 200px;
     padding: 15px 30px;
     height: 50px;
@@ -690,19 +695,22 @@
     transform: translateY(2px);
 }
 
-.App-buttonApp:nth-child(1) {
-    top: 10px;
+.App-buttonApp:nth-child(1) { /* כפתור Menu */
+    top: 3px;
+    left: 0;
 }
 
-.App-buttonApp:nth-child(2) {
-    top: 70px;
+.App-buttonApp:nth-child(2) { /* כפתור Custom */
+    top: 3px;
+    left: 420px;
 }
 
-.App-buttonApp:nth-child(3) {
+.App-buttonApp:nth-child(3) { /* כפתור Search */
     text-overflow: ellipsis;
     overflow: hidden;
     font-size: 20px;
-    top: 130px;
+    top: 3px;
+    left: 210px;
 }
 
 .App-buttonApp:hover {

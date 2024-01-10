@@ -30,7 +30,7 @@ class CheckLocalJobDescription extends React.Component {
         let color = `rgb(0, ${green}, 0)`;
         return (
             <div>
-                <textarea className={"CheckLocalJobDescription-textarea"} value={this.state.jobDescription} onChange={this.handleInputChange} />
+                <textarea placeholder={"Type a job description"} className={"CheckLocalJobDescription-textarea"} value={this.state.jobDescription} onChange={this.handleInputChange} />
                 <button className={"CheckLocalJobDescription-buttonCheckCustJob"} onClick={this.checkDes} disabled={this.state.jobDescription === ''}>Check Job Description </button>
                 {this.state.showResults ? (
                     <div>
@@ -40,10 +40,16 @@ class CheckLocalJobDescription extends React.Component {
                             <tbody>
                             <tr>
                                 <td>
-                                    <span style={{color: 'red'}}>
+                                    <span style={{
+                                        color: 'red',
+                                        fontWeight: 'bold'
+                                    }}>
                                         {this.state.sumOfCommonKeyWords[0] + " Missing key words, "}
                                     </span>
-                                    <span style={{color: 'green'}}>
+                                    <span style={{
+                                        color: 'green',
+                                        fontWeight: 'bold'
+                                    }}>
                                         {this.state.sumOfCommonKeyWords[1] + " Common key words. "}
                                     </span>
                                     <div style={{width: '100%', backgroundColor: '#f3f3f3'}}>
