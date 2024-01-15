@@ -5,6 +5,8 @@ import checkingCvsAndJobLogo from "./myLogo.png";
 import scrollDowns from "./scrollDowns.png";
 import SearchJob from './SearchJob';
 import CheckLocalJobDescription from "./CheckLocalJobDescription";
+import aboutLogo from "./aboutLogo.webp";
+import About from "./About";
 
 function App() {
     const [page, setPage] = useState("menu");
@@ -20,11 +22,16 @@ function App() {
         setShowCheckLocalJobDescription(false);
     }
 
+    const handleAboutClick = () => {
+        setPage("about");
+        setShowCheckLocalJobDescription(false);
+    }
+
     return (
         <div id="App-App">
-            <img className="App-logo" src={checkingCvsAndJobLogo} alt="Logo" />
+            <img className="App-logo" src={checkingCvsAndJobLogo} alt="Logo"/>
             <div className="App-scroll-downs">
-                <img className={"App-scroll"} src={scrollDowns} alt="Scroll down" />
+                <img className={"App-scroll"} src={scrollDowns} alt="Scroll down"/>
                 <div className="App-mousey">
                     <div className="App-scroller"></div>
                 </div>
@@ -33,7 +40,8 @@ function App() {
                 <button className="App-buttonApp" onClick={() => handleButtonClick("menu")} disabled={page === "menu"}>
                     Menu
                 </button>
-                <button className="App-buttonApp" onClick={() => handleButtonClick("searchJob")} disabled={page === "searchJob"}>
+                <button className="App-buttonApp" onClick={() => handleButtonClick("searchJob")}
+                        disabled={page === "searchJob"}>
                     Search Job
                 </button>
                 <button className="App-buttonApp" onClick={toggleCheckLocalJobDescription}
@@ -41,9 +49,14 @@ function App() {
                     Custom inspection
                 </button>
                 {showCheckLocalJobDescription ? <CheckLocalJobDescription cvFileName={nameOfTheFile}/> : null}
-                {page === "menu" ? <Menu onFileNameChange={setNameOfTheFile}/> : <SearchJob cvFileName={nameOfTheFile}/>}
+                {page === "menu" ? <Menu onFileNameChange={setNameOfTheFile}/> :
+                    <SearchJob cvFileName={nameOfTheFile}/>}
             </div>
+            <img className={"App-aboutLogo"} src={aboutLogo} alt={"aboutLogo"}
+                 onClick={handleAboutClick}/>
+            {page === "about" ? <About /> : null}
         </div>
     );
 }
+
 export default App;

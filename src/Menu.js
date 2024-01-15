@@ -22,6 +22,7 @@ class Menu extends React.Component {
         nameOfTheFile: null,
         showNameFile: false,
         background: hoPic,
+        openSelect: false,
     };
 
     fileName = (string) => {
@@ -35,6 +36,9 @@ class Menu extends React.Component {
     handleButtonClick = () => {
         this.setState({background: myLogo});
     }
+    // handleOpenSelect = () => {
+    //     this.setState({openSelect: !this.state.openSelect});
+    // }
 
     extractTheNameFromTheString = (string) => {
         let name = string.split("\\");
@@ -71,14 +75,18 @@ class Menu extends React.Component {
         });
     };
     handleJobSelection = (event) => {
-        this.setState({selectedJob: event.target.value});
+        this.setState({
+            selectedJob: event.target.value,
+            openSelect: true,
+        });
+
     }
 
     renderJobList = () => {
         return (
             <div className={"Menu-select and button"}>
                 <select className={"Menu-select-input"} onChange={this.handleJobSelection}>
-                    <option id={"Menu-SelectOp"} value={""}>Select Job</option>
+                    <option id={"Menu-SelectOp"} value={""} disabled={this.state.openSelect}>Select Job</option>
                     {this.state.jobDescription.map((job, indexJob) => (
                         <option key={indexJob} value={indexJob}>
                             {job}
