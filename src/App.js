@@ -7,6 +7,30 @@ import SearchJob from './SearchJob';
 import CheckLocalJobDescription from "./CheckLocalJobDescription";
 import aboutLogo from "./aboutLogo.webp";
 import About from "./About";
+import styled from 'styled-components';
+
+const Footer = styled.div`
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 20px;
+    position: fixed; /* תקבע את המיקום של האלמנט */
+    bottom: 0; /* הזז את האלמנט לתחתית הדף */
+    left: 0; /* הזז את האלמנט לצד שמאל של הדף */
+`;
+
+const FooterText = styled.p`
+    color: #6c757d;
+    font-size: 14px;
+`;
+
+const FooterLink = styled.a`
+    color: #007bff;
+    text-decoration: none;
+
+    &:hover {
+        color: #0056b3;
+    }
+`;
 
 function App() {
     const [page, setPage] = useState("menu");
@@ -54,7 +78,18 @@ function App() {
             </div>
             <img className={"App-aboutLogo"} src={aboutLogo} alt={"aboutLogo"}
                  onClick={handleAboutClick}/>
-            {page === "about" ? <About /> : null}
+            {page === "about" ? <About /> :
+                <Footer>
+                    <FooterText>
+                        <FooterText>Created by
+                            <FooterLink href="https://www.linkedin.com/in/shoham-sofer/"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        onClick={() => console.log('Link was clicked!')}> Shoham Sofer</FooterLink>
+                        </FooterText>
+                    </FooterText>
+                </Footer>
+            }
         </div>
     );
 }

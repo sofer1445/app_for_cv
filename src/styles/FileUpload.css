@@ -8,6 +8,7 @@
     box-sizing: border-box;
     color: #ffffff;
     text-shadow: 2px 2px 2px #000000;
+
 }
 
 .FileUpload-row {
@@ -65,6 +66,8 @@
     width: 428px; /* הגדלת רוחב תיבת בחירת הקובץ */
     margin-top: -700px; /* הזזת תיבת בחירת הקובץ והכפתור כמה פיקסלים למעלה */
     border-radius: 10px; /* פינות מעוגלות */
+    position: relative; /* נדרש כדי ש- z-index יעבוד */
+    z-index: 9999;
 
 }
 

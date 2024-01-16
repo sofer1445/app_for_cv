@@ -45,9 +45,25 @@ class FileUpload extends React.Component {
             <div className="FileUpload-container">
                 {this.state.loaded === 2 ?
                     <div>
-                        <p>File uploaded successfully</p>
+                        <p style={{
+                            color: "white",
+                            fontSize: "20px",
+                            fontWeight: "bold",
+                            textAlign: "center",
+                            marginTop: "10px",
+                            backgroundColor: "black",
+
+                        } }>File uploaded successfully</p>
                         {this.state.nameFile !== null ?
-                            <p>File name: {this.state.nameFile}</p>
+                            <p style={{
+                                color: "white",
+                                fontSize: "20px",
+                                fontWeight: "bold",
+                                textAlign: "center",
+                                marginTop: "10px",
+                                backgroundColor: "black",
+
+                            } }>File name: {this.state.nameFile}</p>
                             :
                             null
                         }
@@ -75,7 +91,15 @@ class FileUpload extends React.Component {
                         </div>
                     </div>
                 }
-                {this.state.loaded === 1 && <p>File is being uploaded...</p>}
+                {this.state.loaded === 1 && <p style={{
+                    color: "white",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    marginTop: "10px",
+                    backgroundColor: "black",
+
+                } }>File is being uploaded...</p>}
             </div>
         );
     }
