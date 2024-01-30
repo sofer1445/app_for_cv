@@ -6,8 +6,8 @@ import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
 import PopularWords from "./PopularWords";
 import NavLinkStyle from "./NavLinkStyle";
 import FileUpload from "./FileUpload";
-import myLogo from "./myLogo.png";
-import hoPic from "./hoPic.jpeg";
+import myLogo from "./styles/pictures/myLogo.png";
+import hoPic from "./styles/pictures/hoPic.jpeg";
 import "./styles/Menu.css";
 
 class Menu extends React.Component {

@@ -586,7 +586,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: url('../hoPic.jpeg');
+    background-image: url('pictures/hoPic.jpeg');
     background-size: cover;
     background-position: center;
     display: flex;

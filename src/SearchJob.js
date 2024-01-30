@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import spinner from './giphy.gif';
+import spinner from './styles/pictures/giphy.gif';
 import {select} from "async";
 import "./styles/SearchJob.css";
 
@@ -49,7 +49,15 @@ class SearchJob extends React.Component {
             this.setState({jobDetails: response.data});
         } catch (error) {
             console.error(error);
-        }
+            // refresh the page
+            // window.location.reload(false);
+            const response = await axios.post('http://localhost:8080/api/takeFromDB', null, {
+                params: {
+                    jobName: this.state.selectedJob
+                }
+            });
+            this.setState({jobDetails: response.data});
+            }
         this.setState({isLoading: false}); // Set isLoading to false after fetching data
         this.forceUpdate();
     };
@@ -71,6 +79,9 @@ class SearchJob extends React.Component {
 
 
     formatJobDetails = (internetJobs) => {
+        if (!internetJobs) {
+            return null;
+        }
         let percentage = ((this.state.sumOfCommonKeyWords[1] / (this.state.sumOfCommonKeyWords[0] + this.state.sumOfCommonKeyWords[1])) * 100).toFixed(2);
         let green = Math.min(255, Math.max(0, Math.round((percentage - 20) * 5.1)));
         let color = `rgb(0, ${green}, 0)`;
@@ -95,7 +106,8 @@ class SearchJob extends React.Component {
                             <td>{jobDetail.jobName}</td>
                             <td>{jobDetail.companyName}</td>
                             <td><a href={jobDetail.webSite} target="_blank" rel="noopener noreferrer">Company
-                                Website</a></td>
+                                Website</a>
+                            </td>
                             <td>{jobDetail.location}</td>
                             <td>{jobDetail.date}</td>
                             <td><a href={"https://www.drushim.co.il/" + jobDetail.jobLink} target="_blank"

@@ -1,11 +1,11 @@
 import './styles/App.css';
 import React, { useState } from "react";
 import Menu from "./Menu";
-import checkingCvsAndJobLogo from "./myLogo.png";
-import scrollDowns from "./scrollDowns.png";
+import checkingCvsAndJobLogo from "./styles/pictures/myLogo.png";
+import scrollDowns from "./styles/pictures/scrollDowns.png";
 import SearchJob from './SearchJob';
 import CheckLocalJobDescription from "./CheckLocalJobDescription";
-import aboutLogo from "./aboutLogo.webp";
+import aboutLogo from "./styles/pictures/aboutLogo.webp";
 import About from "./About";
 import styled from 'styled-components';
 
